@@ -1,5 +1,6 @@
-# Zsh configs
+# Zsh config
 
+test
 Uses Antidote for package manager: https://antidote.sh/
 
 To install:
