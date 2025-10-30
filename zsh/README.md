@@ -1,4 +1,4 @@
-Zsh configs
+# Zsh configs
 
 Uses Antidote for package manager: https://antidote.sh/
 
