@@ -1,0 +1,48 @@
+vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. (default: '')
+vim.opt.termguicolors = true -- Set termguicolors to enable highlight groups (default: false)
+vim.o.swapfile = false -- Creates a swapfile (default: true)
+vim.o.showtabline = 2 -- Always show tabs (default: 1)
+--vim.o.pumheight = 10 -- Pop up menu height (default: 0)
+vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
+vim.o.fileencoding = 'utf-8' -- The encoding written to a file (default: 'utf-8')
+--vim.o.cmdheight = 1 -- More space in the Neovim command line for displaying messages (default: 1)
+vim.o.undofile = true -- Save undo history (default: false)
+vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience (default: 'menu,preview')
+
+-- --- Status Bar ---
+vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore (default: true)
+
+-- --- Gutter ---
+vim.wo.number = true -- Make line numbers default (default: false)
+vim.o.numberwidth = 4 -- Set number column width to 2 (default: 4)
+vim.o.relativenumber = true -- Set relative numbered lines (default: false)
+--vim.wo.signcolumn = 'yes' -- Keep signcolumn on by default (default: 'auto')
+
+-- --- Case Sensitivity
+vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search (default: false)
+vim.o.smartcase = true -- Smart case (default: false)
+
+-- --- Indentation ---
+vim.o.autoindent = false -- Copy indent from current line when starting new one (default: true)
+vim.o.expandtab = true -- Convert tabs to spaces (default: false)
+vim.o.shiftwidth = 4 -- The number of spaces inserted for each indentation (default: 8)
+vim.o.smartindent = true -- Make indenting smarter again (default: false)
+vim.o.softtabstop = 4 -- Number of spaces that a tab counts for while performing editing operations (default: 0)
+vim.o.tabstop = 4 -- Insert n spaces for a tab (default: 8)
+
+-- --- Line Wrap ---
+vim.o.linebreak = true -- Companion to wrap, don't split words (default: false)
+vim.o.wrap = false -- Display lines as one long line (default: true)
+
+-- --- Cursor ---
+vim.o.cursorline = true -- Highlight the current line (default: false)
+vim.o.scrolloff = 15 -- Minimal number of screen lines to keep above and below the cursor (default: 0)
+vim.o.sidescrolloff = 8 -- Minimal number of screen columns either side of cursor if wrap is `false` (default: 0)
+
+-- --- Window ---
+vim.o.splitbelow = true -- Force all horizontal splits to go below current window (default: false)
+vim.o.splitright = true -- Force all vertical splits to go to the right of current window (default: false)
+
+-- --- Search ---
+vim.o.hlsearch = false -- Set highlight on search (default: true)
+
