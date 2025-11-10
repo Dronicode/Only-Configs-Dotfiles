@@ -13,25 +13,25 @@
 
 # Synthwave color palette (24-bit RGB)
 # Shades
-export COL_VD_GREY='234'    #1c1c1c
+export COL_VD_GREY='234'	#1c1c1c
 
 # Oranges
-export COL_ORANGE='202'     #ff5f00
-export COL_L_ORANGE='214'   #ffaf00
-export COL_YELLOW='220'     #ffd700
+export COL_ORANGE='202'       	#ff5f00
+export COL_L_ORANGE='214'       #ffaf00
+export COL_YELLOW='220'		#ffd700
 
 # Blues
-export COL_BLUE='27'        #005fff
-export COL_L_BLUE='33'      #0087ff
-export COL_CYAN='39'        #00afff
+export COL_BLUE='27'       	#005fff
+export COL_L_BLUE='33'        	#0087ff
+export COL_CYAN='39'        	#00afff
 
 # Violets
-export COL_D_VIOLET='55'    #5f00af
-export COL_D_MAGENTA='91'   #8700af
-export COL_STR_VIOLET='92'  #8700d7
+export COL_D_VIOLET='55'        #5f00af
+export COL_D_MAGENTA='91'       #8700af
+export COL_STR_VIOLET='92'      #8700d7
 
 # Pinks
-export COL_MAGENTA='165'    #d700ff
+export COL_MAGENTA='165'        #d700ff
 
 
 # Temporarily change options.
@@ -127,10 +127,10 @@ export COL_MAGENTA='165'    #d700ff
     # taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
     # cpu_arch              # CPU architecture
-    time                    # current time
+    # time                    # current time
+    command_execution_time  # duration of the last command
     # =========================[ Line #2 ]=========================
     newline
-    command_execution_time  # duration of the last command
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy

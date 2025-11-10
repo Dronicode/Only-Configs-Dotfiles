@@ -8,6 +8,7 @@ fi
 export VISUAL=nvim
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
+export EZA_CONFIG_DIR=~/.config/eza
 
 # Minimal Zsh config
 HISTFILE=$ZDOTDIR/.zsh_history
@@ -24,7 +25,6 @@ compinit -d $ZDOTDIR/.zcompdump
 source $ZDOTDIR/antidote/antidote.zsh
 antidote load $ZDOTDIR/plugins.txt
 
-
 # Plugin-specific config
 zstyle ':completion:*' cache-path $ZDOTDIR/.zcompcache
 zstyle ':completion:*' menu select
@@ -36,12 +36,34 @@ bindkey -e
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-alias ../='cd ../'
-alias ../../='cd ../../'
-alias diff='colordiff -w'
-alias diffy='colordiff -y -w -W=200'
-alias ll='lsd -la'
-alias xx='clear'
+if [ -f "$ZDOTDIR/.aliases" ]; then
+    source "$ZDOTDIR/.aliases"
+fi
+
+# Load other env vars and secrets
+if [ -f "$ZDOTDIR/.zsh_work_env" ]; then
+    source "$ZDOTDIR/.zsh_work_env"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# Auto-start or attach to tmux session
+# if command -v tmux >/dev/null 2>&1; then
+#   # Only run if not already inside tmux
+#   if [ -z "$TMUX" ]; then
+#     # Prefer session named "Luffy"
+#     if tmux has-session -t Luffy 2>/dev/null; then
+#       exec tmux attach-session -t Luffy
+#     else
+#       # If any session exists, attach to the first one
+#       existing_session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | head -n 1)
+#       if [ -n "$existing_session" ]; then
+#         exec tmux attach-session -t "$existing_session"
+#       else
+#         # No sessions exist, create "Luffy"
+#         exec tmux new-session -s Luffy
+#       fi
+#     fi
+#   fi
+# fi
