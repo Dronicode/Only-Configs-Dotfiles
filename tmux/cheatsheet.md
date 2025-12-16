@@ -1,0 +1,341 @@
+# Tmux Configuration Cheatsheet
+
+**Prefix Key:** `Ctrl-b` (default)
+
+---
+
+## Clipboard Operations
+
+### System Clipboard Integration (tmux-yank plugin)
+
+**Copy Mode:**
+
+1. Enter copy mode: `Prefix [`
+2. Navigate and select text
+3. Copy to system clipboard:
+   - **Normal mode:** `y` - Copy selection to system clipboard
+   - **Normal mode:** `Y` - Copy selection and paste to command line
+   - **Mouse:** Select text and release to auto-copy (if enabled)
+
+**Copy Mode Navigation:**
+
+- `Space` - Start selection
+- `Enter` - Copy selection (to tmux buffer only, without plugin)
+- `v` - Begin selection (vi mode)
+- `V` - Begin line selection (vi mode)
+- `Escape` - Cancel/exit copy mode
+- `q` - Quit copy mode
+
+**Pasting:**
+
+- `Prefix ]` - Paste from tmux buffer
+- System clipboard: Use `Ctrl+Shift+V` or middle mouse button (Linux)
+
+---
+
+## Window Management
+
+### Basic Window Operations
+
+| Shortcut   | Action                | Note                  |
+| ---------- | --------------------- | --------------------- |
+| `Prefix c` | Create new window     | Default tmux          |
+| `Prefix &` | Kill current window   | Asks for confirmation |
+| `Prefix ,` | Rename current window | Default tmux          |
+| `Prefix w` | List all windows      | Default tmux          |
+
+### Window Navigation
+
+| Shortcut     | Action                       | Note         |
+| ------------ | ---------------------------- | ------------ |
+| `Prefix n`   | Next window                  | Default tmux |
+| `Prefix p`   | Previous window              | Default tmux |
+| `Prefix 0-9` | Switch to window number      | Default tmux |
+| `Prefix l`   | Switch to last active window | Default tmux |
+
+---
+
+## Pane Management
+
+### Creating Panes (Custom Bindings)
+
+| Shortcut   | Action                            | Defined In  |
+| ---------- | --------------------------------- | ----------- |
+| `Prefix >` | Split horizontally (side by side) | `tmux.conf` |
+| `Prefix <` | Split vertically (top/bottom)     | `tmux.conf` |
+
+**Note:** These are custom shortcuts that differ from tmux defaults:
+
+- Default horizontal split: `Prefix %`
+- Default vertical split: `Prefix "`
+
+### Pane Navigation (vim-tmux-navigator plugin)
+
+The `vim-tmux-navigator` plugin provides seamless navigation between tmux panes and vim splits:
+
+| Shortcut | Action         | Defined By         |
+| -------- | -------------- | ------------------ |
+| `Ctrl-h` | Navigate left  | vim-tmux-navigator |
+| `Ctrl-j` | Navigate down  | vim-tmux-navigator |
+| `Ctrl-k` | Navigate up    | vim-tmux-navigator |
+| `Ctrl-l` | Navigate right | vim-tmux-navigator |
+
+**Important:** These shortcuts work both in tmux AND nvim, allowing seamless navigation!
+
+### Pane Resizing
+
+| Shortcut        | Action            | Note         |
+| --------------- | ----------------- | ------------ |
+| `Prefix Ctrl-↑` | Resize pane up    | Default tmux |
+| `Prefix Ctrl-↓` | Resize pane down  | Default tmux |
+| `Prefix Ctrl-←` | Resize pane left  | Default tmux |
+| `Prefix Ctrl-→` | Resize pane right | Default tmux |
+
+### Other Pane Operations
+
+| Shortcut       | Action                        | Note                  |
+| -------------- | ----------------------------- | --------------------- |
+| `Prefix x`     | Kill current pane             | Asks for confirmation |
+| `Prefix z`     | Toggle pane zoom (fullscreen) | Default tmux          |
+| `Prefix {`     | Swap with previous pane       | Default tmux          |
+| `Prefix }`     | Swap with next pane           | Default tmux          |
+| `Prefix q`     | Show pane numbers             | Default tmux          |
+| `Prefix o`     | Cycle through panes           | Default tmux          |
+| `Prefix Space` | Cycle through layouts         | Default tmux          |
+
+---
+
+## Session Management
+
+### Session Operations
+
+| Shortcut   | Action                     | Note         |
+| ---------- | -------------------------- | ------------ |
+| `Prefix d` | Detach from session        | Default tmux |
+| `Prefix s` | List all sessions          | Default tmux |
+| `Prefix $` | Rename current session     | Default tmux |
+| `Prefix (` | Switch to previous session | Default tmux |
+| `Prefix )` | Switch to next session     | Default tmux |
+
+### Command Line Session Management
+
+```bash
+# Create new session
+tmux new -s session_name
+
+# List sessions
+tmux ls
+
+# Attach to session
+tmux attach -t session_name
+tmux a -t session_name
+
+# Kill session
+tmux kill-session -t session_name
+
+# Kill all sessions except current
+tmux kill-session -a
+
+# Rename session
+tmux rename-session -t old_name new_name
+```
+
+---
+
+## Tmux Commands
+
+| Shortcut   | Action                | Note         |
+| ---------- | --------------------- | ------------ |
+| `Prefix :` | Enter command mode    | Default tmux |
+| `Prefix ?` | List all key bindings | Default tmux |
+| `Prefix t` | Show time             | Default tmux |
+
+---
+
+## Session Persistence (tmux-resurrect)
+
+The `tmux-resurrect` plugin saves and restores tmux sessions:
+
+| Shortcut        | Action               | Plugin         |
+| --------------- | -------------------- | -------------- |
+| `Prefix Ctrl-s` | Save tmux session    | tmux-resurrect |
+| `Prefix Ctrl-r` | Restore tmux session | tmux-resurrect |
+
+**What gets saved:**
+
+- All sessions, windows, and panes
+- Window/pane layouts
+- Current working directory
+- Running programs (limited)
+
+---
+
+## Sidebar (tmux-sidebar)
+
+The `tmux-sidebar` plugin provides a directory tree:
+
+| Shortcut           | Action                             | Plugin       |
+| ------------------ | ---------------------------------- | ------------ |
+| `Prefix Tab`       | Toggle sidebar with directory tree | tmux-sidebar |
+| `Prefix Backspace` | Toggle sidebar with file list      | tmux-sidebar |
+
+---
+
+## Mouse Support
+
+**Enabled** by default in your config (`set -g mouse on`):
+
+- Click to select pane
+- Click on window name to switch
+- Drag pane borders to resize
+- Scroll to navigate history
+- Double-click to select word
+- Triple-click to select line
+- Click and drag to select text (auto-copies with tmux-yank)
+
+---
+
+## Status Bar
+
+Your status bar shows:
+
+- **Left:** Session name
+- **Right:** Hostname, date (YYYY-MM-DD), and time (HH:MM)
+- **Theme:** Tokyo Night
+- **Refresh:** Every 1 second
+
+---
+
+## Configuration Details
+
+### Settings
+
+| Setting            | Value        | Defined In  |
+| ------------------ | ------------ | ----------- |
+| Prefix key         | `Ctrl-b`     | `tmux.conf` |
+| Escape time        | 500ms        | `tmux.conf` |
+| History limit      | 10,000 lines | `tmux.conf` |
+| Mouse support      | Enabled      | `tmux.conf` |
+| Base index         | 1 (not 0)    | `tmux.conf` |
+| Window renaming    | Automatic    | `tmux.conf` |
+| Window renumbering | Enabled      | `tmux.conf` |
+
+### Installed Plugins
+
+1. **tpm** - Tmux Plugin Manager (required)
+2. **tmux-sensible** - Sensible default settings
+3. **fabioluciano/tmux-tokyo-night** - Tokyo Night theme
+4. **christoomey/vim-tmux-navigator** - Seamless vim/tmux navigation
+5. **tmux-plugins/tmux-prefix-highlight** - Highlights when prefix is active
+6. **tmux-plugins/tmux-resurrect** - Save/restore sessions
+7. **tmux-plugins/tmux-sidebar** - Directory tree sidebar
+8. **tmux-plugins/tmux-yank** - Copy to system clipboard
+
+### Plugin Management Commands
+
+```bash
+# Install new plugins (after adding to config)
+Prefix I (capital i)
+
+# Update plugins
+Prefix U (capital u)
+
+# Uninstall plugins (after removing from config)
+Prefix Alt-u
+```
+
+---
+
+## Custom Keybinding Highlights
+
+### Your Unique Customizations:
+
+1. **`Prefix >`** - Horizontal split (instead of default `%`)
+2. **`Prefix <`** - Vertical split (instead of default `"`)
+3. **Vim-style navigation** - `Ctrl-hjkl` works seamlessly between tmux and nvim
+4. **Pane paths** - New panes open in the current pane's directory
+
+---
+
+## Tips & Workflows
+
+### Clipboard Workflow
+
+1. **Copy from tmux to system:**
+
+   - Enter copy mode: `Prefix [`
+   - Navigate to text
+   - Press `Space` to start selection
+   - Navigate to select text
+   - Press `y` to copy to system clipboard
+   - Exit with `q` or `Escape`
+
+2. **Paste into tmux:**
+   - From tmux buffer: `Prefix ]`
+   - From system clipboard: `Ctrl+Shift+V` (Linux terminal) or middle mouse button
+
+### Session Management Workflow
+
+```bash
+# Create a named session for each project
+tmux new -s project1
+tmux new -s project2
+
+# Detach with Prefix d
+# List and switch with Prefix s
+
+# Save session state before shutting down
+# Prefix Ctrl-s
+
+# Restore after reboot
+# Prefix Ctrl-r
+```
+
+### Efficient Layout Creation
+
+1. Start with one pane
+2. Split horizontally: `Prefix >`
+3. Split vertically in each pane: `Prefix <`
+4. Navigate with `Ctrl-hjkl`
+5. Resize as needed with `Prefix Ctrl-arrows`
+6. Save layout: `Prefix Ctrl-s`
+
+---
+
+## Advanced Commands
+
+### Command Mode Examples
+
+```bash
+# Enter command mode: Prefix :
+
+# Resize pane to exact size
+:resize-pane -D 10    # Down 10 lines
+:resize-pane -U 5     # Up 5 lines
+:resize-pane -L 20    # Left 20 columns
+:resize-pane -R 15    # Right 15 columns
+
+# Move pane to new window
+:break-pane           # Move current pane to new window
+
+# Join pane from another window
+:join-pane -s :2      # Join pane from window 2
+
+# Set pane title
+:select-pane -T "My Title"
+
+# Reload config
+:source-file ~/.config/tmux/tmux.conf
+```
+
+### Scripting & Automation
+
+```bash
+# Create complex layouts programmatically
+tmux new-session -d -s dev
+tmux split-window -h
+tmux split-window -v
+tmux select-pane -t 0
+tmux send-keys 'nvim' C-m
+tmux attach -t dev
+```
