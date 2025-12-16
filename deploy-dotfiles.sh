@@ -22,9 +22,9 @@ echo ""
 
 echo "Step 3: Setting up zsh..."
 # Install Antidote for zsh
-if [ ! -d "${ZDOTDIR:-$HOME}/antidote" ]; then
+if [ ! -d "$HOME/.config/zsh/antidote" ]; then
     echo "Installing Antidote (zsh plugin manager)..."
-    git clone --depth=1 https://github.com/mattmc3/antidote.git "${ZDOTDIR:-$HOME}/antidote"
+    git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.config/zsh/antidote"
 fi
 
 # Set zsh as default shell
