@@ -48,7 +48,7 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-# Auto-start or attach to tmux session
+# Auto-start or attach to tmux session (works, but messes with the integrated terminal in VSC and haven't fixed yet)
 # if command -v tmux >/dev/null 2>&1; then
 #   # Only run if not already inside tmux
 #   if [ -z "$TMUX" ]; then
