@@ -2,6 +2,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
     config = function()
     require('nvim-treesitter.configs').setup {
@@ -127,6 +128,6 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VeryLazy',
+    lazy = true,
   },
 }
