@@ -4,8 +4,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ':TSUpdate',
-    config = function()
-    require('nvim-treesitter.configs').setup {
+    opts = {
       -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = {
         'bash',
@@ -122,8 +121,7 @@ return {
           },
         },
       },
-    }
-    end,
+    },
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
