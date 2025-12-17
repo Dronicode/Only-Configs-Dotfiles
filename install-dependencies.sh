@@ -13,7 +13,7 @@ fi
 
 install_arch() {
     echo "Detected Arch Linux - using pacman"
-    sudo pacman -S --needed --noconfirm eza fzf zsh neovim tmux git
+    sudo pacman -S --needed --noconfirm eza fzf zsh neovim tmux git npm
     
     # Install yay if not present (needed for AUR packages)
     if ! command -v yay &> /dev/null; then
@@ -36,7 +36,21 @@ install_arch() {
 install_debian() {
     echo "Detected Debian/Ubuntu - using apt"
     sudo apt update
-    sudo apt install -y zsh fzf autojump neovim tmux git
+    sudo apt install -y zsh fzf autojump tmux git curl npm nodejs build-essential
+    
+    # Install newer Neovim (Debian/Ubuntu repos have old versions)
+    echo "Installing Neovim (latest stable via AppImage)..."
+    if ! command -v nvim &> /dev/null || [ "$(nvim --version | head -1 | cut -d' ' -f2 | cut -d'.' -f1-2)" != "0.11" ]; then
+        # Install FUSE for AppImage support
+        sudo apt install -y libfuse2
+        
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+        chmod u+x nvim.appimage
+        sudo mv nvim.appimage /usr/local/bin/nvim
+        echo "✓ Neovim installed"
+    else
+        echo "✓ Neovim already up to date"
+    fi
     
     # eza requires manual installation on Debian/Ubuntu
     if ! command -v eza &> /dev/null; then
