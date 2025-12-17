@@ -6,7 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 mkdir -p "$HOME/.config/eza"
 mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
-mkdir -p "$HOME/.config/zsh"
+mkdir -p "$HOME/.config/zsh/cache/completions"
 
 # Eza - link theme file only
 ln -sf "$SCRIPT_DIR/eza/theme.yml" "$HOME/.config/eza/theme.yml"
