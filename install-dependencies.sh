@@ -39,17 +39,44 @@ install_debian() {
     sudo apt install -y zsh fzf autojump tmux git curl npm nodejs build-essential
     
     # Install newer Neovim (Debian/Ubuntu repos have old versions)
-    echo "Installing Neovim (latest stable via AppImage)..."
-    if ! command -v nvim &> /dev/null || [ "$(nvim --version | head -1 | cut -d' ' -f2 | cut -d'.' -f1-2)" != "0.11" ]; then
-        # Install FUSE for AppImage support
-        sudo apt install -y libfuse2
+    echo "Checking Neovim version..."
+    
+    # Check if nvim 0.11+ is already installed
+    if command -v nvim &> /dev/null; then
+        NVIM_VERSION=$(nvim --version | head -1 | grep -oP 'v?\K[0-9]+\.[0-9]+' | head -1)
+        MAJOR=$(echo "$NVIM_VERSION" | cut -d. -f1)
+        MINOR=$(echo "$NVIM_VERSION" | cut -d. -f2)
         
-        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        chmod u+x nvim.appimage
-        sudo mv nvim.appimage /usr/local/bin/nvim
-        echo "✓ Neovim installed"
+        if [ "$MAJOR" -gt 0 ] || ([ "$MAJOR" -eq 0 ] && [ "$MINOR" -ge 11 ]); then
+            echo "✓ Neovim $NVIM_VERSION already installed"
+        else
+            echo "Neovim $NVIM_VERSION found, but need 0.11+. Upgrading..."
+            NEED_INSTALL=true
+        fi
     else
-        echo "✓ Neovim already up to date"
+        echo "Neovim not found. Installing..."
+        NEED_INSTALL=true
+    fi
+    
+    if [ "$NEED_INSTALL" = true ]; then
+        ARCH=$(uname -m)
+        
+        if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "armv7l" ]; then
+            echo "ARM architecture - downloading tarball..."
+            cd /tmp
+            curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.tar.gz
+            sudo tar -xzf nvim-linux-arm64.tar.gz -C /usr/local --strip-components=1
+            rm nvim-linux-arm64.tar.gz
+            echo "✓ Neovim installed"
+        else
+            echo "x86_64 architecture - using AppImage..."
+            sudo apt install -y libfuse2
+            cd /tmp
+            curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+            chmod u+x nvim.appimage
+            sudo mv nvim.appimage /usr/local/bin/nvim
+            echo "✓ Neovim installed"
+        fi
     fi
     
     # eza requires manual installation on Debian/Ubuntu
