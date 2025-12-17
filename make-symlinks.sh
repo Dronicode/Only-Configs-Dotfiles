@@ -14,7 +14,7 @@ echo "✓ Linked eza/theme.yml"
 
 # Nvim - link entire directory (nvim creates files elsewhere)
 ln -sf "$SCRIPT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
-ln -sf "$SCRIPT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
+ln -sfn "$SCRIPT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
 echo "✓ Linked nvim config"
 
 # Tmux - link config file only
