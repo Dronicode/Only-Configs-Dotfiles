@@ -93,7 +93,7 @@ install_debian() {
 
 # Install based on OS
 case "$OS" in
-    arch|manjaro|endeavouros)
+    arch|manjaro|endeavouros|steamos)
         install_arch
         ;;
     ubuntu|debian|pop|linuxmint)
@@ -112,16 +112,6 @@ case "$OS" in
         exit 1
         ;;
 esac
-
-# Install TPM (Tmux Plugin Manager)
-if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
-    echo "Installing TPM (Tmux Plugin Manager)..."
-    git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
-    echo "✓ TPM installed"
-    echo "  Run 'tmux' then press Prefix + I to install tmux plugins"
-else
-    echo "✓ TPM already installed"
-fi
 
 echo "✓ Dependencies installed successfully"
 

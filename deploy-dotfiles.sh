@@ -20,13 +20,7 @@ echo "Step 2: Creating symlinks..."
 bash "$SCRIPT_DIR/make-symlinks.sh"
 echo ""
 
-echo "Step 3: Setting up zsh..."
-# Install Antidote for zsh
-if [ ! -d "$HOME/.config/zsh/antidote" ]; then
-    echo "Installing Antidote (zsh plugin manager)..."
-    git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.config/zsh/antidote"
-fi
-
+echo "Step 3: Setting zsh as default shell..."
 # Set zsh as default shell
 SHELL_CHANGED=false
 ZSH_PATH=$(grep -E '^/(usr/)?bin/zsh$' /etc/shells | head -1)

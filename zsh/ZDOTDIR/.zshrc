@@ -21,6 +21,11 @@ export ZSH_CACHE_DIR="${ZDOTDIR}/cache"
 autoload -Uz compinit
 compinit -d $ZDOTDIR/.zcompdump
 
+# Auto-install Antidote if not present
+if [[ ! -d $ZDOTDIR/antidote ]]; then
+  git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/antidote
+fi
+
 # Load Antidote
 source $ZDOTDIR/antidote/antidote.zsh
 antidote load $ZDOTDIR/plugins.txt

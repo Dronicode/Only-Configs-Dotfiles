@@ -3,29 +3,50 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Function to safely create symlink (backs up existing files/dirs)
+safe_link() {
+    local source="$1"
+    local target="$2"
+    local use_n="${3:-false}"
+    
+    # Backup existing file or directory if not already a symlink
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+        local backup="${target}.old.$(date +%Y%m%d_%H%M%S)"
+        echo "  Backing up: $target → $backup"
+        mv "$target" "$backup"
+    fi
+    
+    # Create symlink
+    if [ "$use_n" = "true" ]; then
+        ln -sfn "$source" "$target"
+    else
+        ln -sf "$source" "$target"
+    fi
+}
+
 mkdir -p "$HOME/.config/eza"
 mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
 mkdir -p "$HOME/.config/zsh/cache/completions"
 
 # Eza - link theme file only
-ln -sf "$SCRIPT_DIR/eza/theme.yml" "$HOME/.config/eza/theme.yml"
+safe_link "$SCRIPT_DIR/eza/theme.yml" "$HOME/.config/eza/theme.yml"
 echo "✓ Linked eza/theme.yml"
 
 # Nvim - link entire directory (nvim creates files elsewhere)
-ln -sf "$SCRIPT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
-ln -sfn "$SCRIPT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
+safe_link "$SCRIPT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+safe_link "$SCRIPT_DIR/nvim/lua" "$HOME/.config/nvim/lua" true
 echo "✓ Linked nvim config"
 
 # Tmux - link config file only
-ln -sf "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+safe_link "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 echo "✓ Linked tmux.conf"
 
 # Zsh - link specific files only (not cache/history)
-ln -sf "$SCRIPT_DIR/zsh/ZDOTDIR/.aliases" "$HOME/.config/zsh/.aliases"
-ln -sf "$SCRIPT_DIR/zsh/ZDOTDIR/.p10k.zsh" "$HOME/.config/zsh/.p10k.zsh"
-ln -sf "$SCRIPT_DIR/zsh/ZDOTDIR/.zshrc" "$HOME/.config/zsh/.zshrc"
-ln -sf "$SCRIPT_DIR/zsh/ZDOTDIR/plugins.txt" "$HOME/.config/zsh/plugins.txt"
+safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.aliases" "$HOME/.config/zsh/.aliases"
+safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.p10k.zsh" "$HOME/.config/zsh/.p10k.zsh"
+safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.zshrc" "$HOME/.config/zsh/.zshrc"
+safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/plugins.txt" "$HOME/.config/zsh/plugins.txt"
 echo "✓ Linked zsh config files"
 
 # Zsh system environment (requires sudo)
