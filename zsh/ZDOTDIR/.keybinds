@@ -1,0 +1,39 @@
+# Zsh Keybindings Configuration
+
+# Use emacs key bindings (Ctrl-based shortcuts)
+bindkey -e
+
+# Navigation keys
+bindkey '^[[H' beginning-of-line      # Home
+bindkey '^[[F' end-of-line            # End
+bindkey '^[[1~' beginning-of-line     # Home (alternate)
+bindkey '^[[4~' end-of-line           # End (alternate)
+bindkey '^[[5~' up-line-or-history    # Page Up
+bindkey '^[[6~' down-line-or-history  # Page Down
+
+# Word navigation
+bindkey '^[[1;5C' forward-word        # Ctrl+Right
+bindkey '^[[1;5D' backward-word       # Ctrl+Left
+bindkey '^[^[[C' forward-word         # Alt+Right (alternate)
+bindkey '^[^[[D' backward-word        # Alt+Left (alternate)
+
+# Deletion keys
+bindkey '^[[3~' delete-char           # Delete
+bindkey '^H' backward-delete-char     # Backspace
+bindkey '^?' backward-delete-char     # Backspace (alternate)
+bindkey '^[[3;5~' delete-word         # Ctrl+Delete
+bindkey '^W' backward-kill-word       # Ctrl+W (delete word backward)
+
+# History search with arrow keys
+bindkey '^[[A' history-substring-search-up      # Up arrow
+bindkey '^[[B' history-substring-search-down    # Down arrow
+bindkey '^P' history-substring-search-up        # Ctrl+P (alternate)
+bindkey '^N' history-substring-search-down      # Ctrl+N (alternate)
+
+# Other useful bindings
+bindkey '^R' history-incremental-search-backward  # Ctrl+R (reverse search)
+bindkey '^A' beginning-of-line        # Ctrl+A
+bindkey '^E' end-of-line              # Ctrl+E
+bindkey '^K' kill-line                # Ctrl+K (delete to end of line)
+bindkey '^U' backward-kill-line       # Ctrl+U (delete to beginning of line)
+bindkey '^Y' yank                     # Ctrl+Y (paste)

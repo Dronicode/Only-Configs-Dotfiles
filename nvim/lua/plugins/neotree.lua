@@ -16,6 +16,13 @@ return {
     },
     config = function()
         require("neo-tree").setup({
+            filesystem = {
+                filtered_items = {
+                    visible = true,  -- Show hidden files by default
+                    hide_dotfiles = false,
+                    hide_gitignored = false,
+                },
+            },
             window = {
                 -- position = "right",
                 width = 30,

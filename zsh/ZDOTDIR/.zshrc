@@ -9,15 +9,14 @@ export VISUAL=nvim
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 export EZA_CONFIG_DIR=~/.config/eza
+export FZF_BASE=/bin/fzf
+export ZSH_CACHE_DIR="${ZDOTDIR}/cache"
 
-# Minimal Zsh config
+# History and completion settings
 HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e
 
-export FZF_BASE=/bin/fzf
-export ZSH_CACHE_DIR="${ZDOTDIR}/cache"
 autoload -Uz compinit
 compinit -d $ZDOTDIR/.zcompdump
 
@@ -36,11 +35,12 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':omz:plugins:alias-finder' autoload yes
 
-# Keybindings and aliases
-bindkey -e
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# Load keybindings
+if [ -f "$ZDOTDIR/.keybinds" ]; then
+    source "$ZDOTDIR/.keybinds"
+fi
 
+# Load aliases
 if [ -f "$ZDOTDIR/.aliases" ]; then
     source "$ZDOTDIR/.aliases"
 fi
