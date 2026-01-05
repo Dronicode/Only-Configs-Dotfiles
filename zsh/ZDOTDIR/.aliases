@@ -3,9 +3,11 @@ alias ../../='cd ../../'
 alias ~='cd ~'
 alias diff='colordiff -w'
 alias diffy='colordiff -y -w -W=200'
-alias ll='eza -alThM --icons --git-ignore --git-repos-no-status --git -L2 --total-size --no-user'
-alias llb='eza -alThMB --icons --git-ignore --git-repos-no-status --git -L2 --total-size --no-user'
-alias llu='eza -alThM --icons --git-ignore --git-repos-no-status --git -L2 --total-size'
+
+# eza shortcuts, replaces ls
+alias ll='eza -alThM --icons --git --git-repos -L2 --total-size'
+alias lli='eza -alThM --icons --git --git-ignore -L2 --total-size'
+alias llbyte='eza -alThMB --icons -L2 --total-size'
 
 # WSL-specific aliases
 if grep -qEi "(microsoft|wsl)" /proc/version 2>/dev/null; then
