@@ -9,10 +9,4 @@ alias ll='eza -alThM --icons --git --git-repos -L2 --total-size'
 alias lli='eza -alThM --icons --git --git-ignore -L2 --total-size'
 alias llbyte='eza -alThMB --icons -L2 --total-size'
 
-# WSL-specific aliases
-if grep -qEi "(microsoft|wsl)" /proc/version 2>/dev/null; then
-  alias ssh='ssh.exe'
-  alias ssh-add='ssh-add.exe'
-fi
-
 alias xx='clear'

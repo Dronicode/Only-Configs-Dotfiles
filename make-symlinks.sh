@@ -44,6 +44,7 @@ echo "✓ Linked tmux.conf"
 
 # Zsh - link specific files only (not cache/history)
 safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.aliases" "$HOME/.config/zsh/.aliases"
+safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.keybinds" "$HOME/.config/zsh/.keybinds"
 safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.p10k.zsh" "$HOME/.config/zsh/.p10k.zsh"
 safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.zshrc" "$HOME/.config/zsh/.zshrc"
 safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/plugins.txt" "$HOME/.config/zsh/plugins.txt"

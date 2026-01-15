@@ -5,12 +5,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export VISUAL=nvim
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 export EZA_CONFIG_DIR=~/.config/eza
 export FZF_BASE=/bin/fzf
 export ZSH_CACHE_DIR="${ZDOTDIR}/cache"
+export CONF="$HOME/.config"
 
 # History and completion settings
 HISTFILE=$ZDOTDIR/.zsh_history
