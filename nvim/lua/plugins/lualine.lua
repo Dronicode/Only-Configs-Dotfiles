@@ -37,13 +37,13 @@ return {
     local diagnostics = {
       'diagnostics',
       sources = { 'nvim_diagnostic' },
-      sections = { 'error', 'warn' },
+      sections = { 'error', 'warn', 'info', 'hint' },
       --symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
       symbols = { error = 'E ', warn = 'W ', info = 'I ', hint = 'H ' },
       colored = true,
       update_in_insert = false,
-      always_visible = false,
-      cond = hide_in_width,
+      always_visible = true,
+      -- cond = hide_in_width,
     }
 
     local diff = {
