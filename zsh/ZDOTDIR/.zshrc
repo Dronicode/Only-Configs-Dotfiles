@@ -74,3 +74,6 @@ fi
 #     fi
 #   fi
 # fi
+
+# Set terminal title to basename of current directory for tab titles
+precmd() { print -Pn "\e]0;%~\a" }

@@ -27,6 +27,7 @@ safe_link() {
 mkdir -p "$HOME/.config/eza"
 mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
+mkdir -p "$HOME/.config/wezterm"
 mkdir -p "$HOME/.config/zsh/cache/completions"
 
 # Eza - link theme file only
@@ -41,6 +42,10 @@ echo "✓ Linked nvim config"
 # Tmux - link config file only
 safe_link "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 echo "✓ Linked tmux.conf"
+
+# WezTerm - link config file only
+safe_link "$SCRIPT_DIR/wezterm/.wezterm.lua" "$HOME/.config/wezterm/.wezterm.lua"
+echo "✓ Linked wezterm config"
 
 # Zsh - link specific files only (not cache/history)
 safe_link "$SCRIPT_DIR/zsh/ZDOTDIR/.aliases" "$HOME/.config/zsh/.aliases"
