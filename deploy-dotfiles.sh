@@ -20,12 +20,14 @@ echo "Step 2: Creating symlinks..."
 bash "$SCRIPT_DIR/make-symlinks.sh"
 echo ""
 
-echo "Step 3: Setting zsh as default shell..."
+echo "Step 3: Doing additional configuration..."
+
+echo "Setting zsh as default shell"
 # Set zsh as default shell
 SHELL_CHANGED=false
 ZSH_PATH=$(grep -E '^/(usr/)?bin/zsh$' /etc/shells | head -1)
 if [ -z "$ZSH_PATH" ]; then
-    echo "⚠️  Could not find zsh in /etc/shells"
+    echo "Could not find zsh in /etc/shells"
     echo "Available shells:"
     cat /etc/shells
 else
@@ -38,6 +40,19 @@ else
     fi
 fi
 echo ""
+
+# echo "Getting WezTerm terminfo"
+# # Check for local wezterm terminfo directory/file instead of querying terminfo DB
+# if [ -e "$HOME/.config/wezterm/.terminfo" ]; then
+#     echo "✓ WezTerm terminfo already present"
+# else
+#     tempfile=$(mktemp)
+#     curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo
+#     tic -x -o ~/.config/wezterm/.terminfo $tempfile
+#     rm $tempfile
+#     echo "✓ WezTerm terminfo installed"
+# fi
+# echo ""
 
 echo "=== Deployment Complete ==="
 echo ""

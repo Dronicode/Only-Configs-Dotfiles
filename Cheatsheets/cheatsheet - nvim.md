@@ -92,14 +92,15 @@
 
 **Note:** Buffer numbers are visible in the bufferline at the top of your screen.
 
-| Shortcut    | Action                                      | Defined In         |
-| ----------- | ------------------------------------------- | ------------------ |
-| `<Tab>`     | Next buffer (moves right in bufferline)     | `core/keymaps.lua` |
-| `<S-Tab>`   | Previous buffer (moves left in bufferline)  | `core/keymaps.lua` |
-| `<leader>x` | Close buffer (preserves window layout)      | `core/keymaps.lua` |
-| `<leader>b` | Open new empty buffer                       | `core/keymaps.lua` |
-| `:b <num>`  | Jump to buffer by number (e.g., `:b 3`)     | Built-in           |
-| `:b <name>` | Jump to buffer by name (with Tab completion)| Built-in           |
+| Shortcut       | Action                                       | Defined In               |
+| -------------- | -------------------------------------------- | ------------------------ |
+| `<Tab>`        | Next buffer (moves right in bufferline)      | `plugins/bufferline.lua` |
+| `<S-Tab>`      | Previous buffer (moves left in bufferline)   | `plugins/bufferline.lua` |
+| `<leader>x`    | Close buffer (preserves window layout)       | `core/keymaps.lua`       |
+| `<leader>b`    | Open new empty buffer                        | `core/keymaps.lua`       |
+| `:b <num>`     | Jump to buffer by number (e.g., `:b 3`)      | Built-in                 |
+| `:b <name>`    | Jump to buffer by name (with Tab completion) | Built-in                 |
+| `<leader>1..9` | Jump to buffer by number (via bufferline)    | `plugins/bufferline.lua` |
 
 ---
 
@@ -109,8 +110,8 @@
 
 | Shortcut     | Action                        | Defined In         |
 | ------------ | ----------------------------- | ------------------ |
-| `<leader>v`  | Split window vertically       | `core/keymaps.lua` |
-| `<leader>h`  | Split window horizontally     | `core/keymaps.lua` |
+| `<leader>>`  | Split window vertically       | `core/keymaps.lua` |
+| `<leader><`  | Split window horizontally     | `core/keymaps.lua` |
 | `<leader>se` | Make split windows equal size | `core/keymaps.lua` |
 | `<leader>xs` | Close current split window    | `core/keymaps.lua` |
 
@@ -138,7 +139,7 @@
 
 | Shortcut     | Action             | Defined In         |
 | ------------ | ------------------ | ------------------ |
-| `<leader>to` | Open new tab       | `core/keymaps.lua` |
+| `<leader>tc` | Open new tab       | `core/keymaps.lua` |
 | `<leader>tx` | Close current tab  | `core/keymaps.lua` |
 | `<leader>tn` | Go to next tab     | `core/keymaps.lua` |
 | `<leader>tp` | Go to previous tab | `core/keymaps.lua` |

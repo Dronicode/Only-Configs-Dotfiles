@@ -1,7 +1,7 @@
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. (default: '')
 vim.opt.termguicolors = true -- Set termguicolors to enable highlight groups (default: false)
 vim.o.swapfile = false -- Creates a swapfile (default: true)
-vim.o.showtabline = 2 -- Always show tabs (default: 1)
+vim.o.showtabline = 0 -- Hide builtin tabline (using bufferline.nvim instead)
 --vim.o.pumheight = 10 -- Pop up menu height (default: 0)
 vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
 vim.o.fileencoding = 'utf-8' -- The encoding written to a file (default: 'utf-8')
@@ -45,4 +45,44 @@ vim.o.splitright = true -- Force all vertical splits to go to the right of curre
 
 -- --- Search ---
 vim.o.hlsearch = false -- Set highlight on search (default: true)
+
+-- --- Diagnostics ---
+vim.diagnostic.config({
+	virtual_text = {
+		source = "always",
+		prefix = function(diagnostic)
+			if diagnostic.severity == vim.diagnostic.severity.ERROR then
+				return "💀"
+			elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+				return "!"
+			elseif diagnostic.severity == vim.diagnostic.severity.INFO then
+				return "·"
+			else
+				return "·"
+			end
+		end,
+	},
+	underline = true,
+	severity_sort = true,
+	float = {
+		source = "always",
+		border = "rounded",
+	},
+})
+
+-- Enable undercurl (curly underline) for diagnostics and set spine colors
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#ff4d6d" })
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#d19a66" })
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#61afef" })
+		vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#56b6c2" })
+	end,
+})
+
+-- Apply undercurl highlights immediately
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#ff4d6d" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#d19a66" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#61afef" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#56b6c2" })
 

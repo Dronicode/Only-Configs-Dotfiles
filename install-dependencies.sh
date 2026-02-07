@@ -114,4 +114,3 @@ case "$OS" in
 esac
 
 echo "✓ Dependencies installed successfully"
-

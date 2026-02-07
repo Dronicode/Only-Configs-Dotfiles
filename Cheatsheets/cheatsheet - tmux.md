@@ -82,6 +82,8 @@ The `vim-tmux-navigator` plugin provides seamless navigation between tmux panes 
 
 **Important:** These shortcuts work both in tmux AND nvim, allowing seamless navigation!
 
+Note: This repo's `tmux.conf` includes non-prefix bindings so tmux will accept `Ctrl-h/j/k/l` directly (no `Prefix` required). That enables `vim-tmux-navigator` to fall back from Neovim to tmux when Neovim has no split in that direction. Reload tmux config after changes with `tmux source-file ~/.config/tmux/tmux.conf`.
+
 ### Pane Resizing
 
 | Shortcut        | Action            | Note         |
@@ -95,11 +97,11 @@ The `vim-tmux-navigator` plugin provides seamless navigation between tmux panes 
 
 | Shortcut       | Action                        | Note                  |
 | -------------- | ----------------------------- | --------------------- |
-| `Prefix x`     | Kill current pane             | Asks for confirmation |
+| `Prefix x`     | Kill current window           | Asks for confirmation |
 | `Prefix z`     | Toggle pane zoom (fullscreen) | Default tmux          |
 | `Prefix {`     | Swap with previous pane       | Default tmux          |
 | `Prefix }`     | Swap with next pane           | Default tmux          |
-| `Prefix q`     | Show pane numbers             | Default tmux          |
+| `Prefix q`     | Kill current pane             | (custom - now kills pane) |
 | `Prefix o`     | Cycle through panes           | Default tmux          |
 | `Prefix Space` | Cycle through layouts         | Default tmux          |
 

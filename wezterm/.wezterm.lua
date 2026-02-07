@@ -1,5 +1,10 @@
 local wezterm = require("wezterm")
 local config = {}
+-- config.set_environment_variables = {
+-- 	TERMINFO_DIRS = '/home/luffy/.config/wezterm/wezterm.terminfo',
+--   WSLENV = 'TERMINFO_DIRS',
+-- }
+config.term = "wezterm"
 
 -- Detect OS
 local is_windows = wezterm.target_triple:find("windows") ~= nil
@@ -128,6 +133,12 @@ config.keys = {
 
 	-- PANE ZOOM (Alt+Shift+z)
 	{ key = "z", mods = "ALT|SHIFT", action = wezterm.action.TogglePaneZoomState },
+
+	-- PANE RESIZE (Alt+Shift+Arrow) - adjust pane size by 5 cells
+	{ key = "LeftArrow",  mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize{"Left", 5} },
+	{ key = "RightArrow", mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize{"Right", 5} },
+	{ key = "UpArrow",    mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize{"Up", 5} },
+	{ key = "DownArrow",  mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize{"Down", 5} },
 
 	-- RENAME TAB (Alt+Shift+,)
 	{ key = ",", mods = "ALT|SHIFT", action = wezterm.action.PromptInputLine({
