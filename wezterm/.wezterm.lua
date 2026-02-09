@@ -1,10 +1,5 @@
 local wezterm = require("wezterm")
 local config = {}
--- config.set_environment_variables = {
--- 	TERMINFO_DIRS = '/home/luffy/.config/wezterm/wezterm.terminfo',
---   WSLENV = 'TERMINFO_DIRS',
--- }
-config.term = "wezterm"
 
 -- Detect OS
 local is_windows = wezterm.target_triple:find("windows") ~= nil

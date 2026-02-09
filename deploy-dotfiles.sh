@@ -41,19 +41,6 @@ else
 fi
 echo ""
 
-# echo "Getting WezTerm terminfo"
-# # Check for local wezterm terminfo directory/file instead of querying terminfo DB
-# if [ -e "$HOME/.config/wezterm/.terminfo" ]; then
-#     echo "✓ WezTerm terminfo already present"
-# else
-#     tempfile=$(mktemp)
-#     curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo
-#     tic -x -o ~/.config/wezterm/.terminfo $tempfile
-#     rm $tempfile
-#     echo "✓ WezTerm terminfo installed"
-# fi
-# echo ""
-
 echo "=== Deployment Complete ==="
 echo ""
 
