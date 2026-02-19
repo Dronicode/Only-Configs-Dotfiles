@@ -47,26 +47,29 @@ vim.o.splitright = true -- Force all vertical splits to go to the right of curre
 vim.o.hlsearch = false -- Set highlight on search (default: true)
 
 -- --- Diagnostics ---
+local diagnostic_symbols = {
+	[vim.diagnostic.severity.ERROR] = "💀",
+	[vim.diagnostic.severity.WARN] = "",
+	[vim.diagnostic.severity.INFO] = "",
+	[vim.diagnostic.severity.HINT] = "󰌵",
+}
+
 vim.diagnostic.config({
 	virtual_text = {
-		source = "always",
+		-- don't show the LSP/source name inline; keep it in floats
+		source = true ,
+		severity = { min = vim.diagnostic.severity.HINT },
 		prefix = function(diagnostic)
-			if diagnostic.severity == vim.diagnostic.severity.ERROR then
-				return "💀"
-			elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-				return "!"
-			elseif diagnostic.severity == vim.diagnostic.severity.INFO then
-				return "·"
-			else
-				return "·"
-			end
+			return diagnostic_symbols[diagnostic.severity] or ""
 		end,
 	},
 	underline = true,
 	severity_sort = true,
+	signs = false,
 	float = {
 		source = "always",
 		border = "rounded",
+		severity = { min = vim.diagnostic.severity.HINT },
 	},
 })
 

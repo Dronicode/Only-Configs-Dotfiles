@@ -14,8 +14,8 @@ return {
 				-- Backend Development
 				"gopls", -- Go language server
 				"jsonls", -- JSON config files
-				"pyright", -- Python LSP with type checking
-				"ruff", -- Fast Python linter
+				"ty", -- Python type checking and language services
+				"ruff", -- Fast Python linting and formatting
 
 				-- DevOps & Infrastructure
 				--  'ansiblels', -- Ansible playbooks

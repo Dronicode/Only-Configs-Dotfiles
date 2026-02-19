@@ -190,13 +190,16 @@
 
 ### LSP Actions
 
-- **Note:** LSP keybindings are typically available when an LSP server is attached:
-  - `gd` - Go to definition (standard LSP)
-  - `gD` - Go to declaration (standard LSP)
-  - `gr` - Go to references (standard LSP)
-  - `gi` - Go to implementation (standard LSP)
-  - `K` - Hover documentation (standard LSP)
-  - `<C-k>` - Signature help (insert mode, standard LSP)
+| Shortcut     | Action             | Defined In         |
+| ------------ | ------------------ | ------------------ |
+| `gd`         | Go to definition   | `core/keymaps.lua` |
+| `gD`         | Go to declaration  | `core/keymaps.lua` |
+| `gr`         | Go to references   | `core/keymaps.lua` |
+| `K`          | Hover documentation | `core/keymaps.lua` |
+| `<leader>ca` | Code actions (fixes, refactoring) | `core/keymaps.lua` |
+| `<leader>cf` | Format buffer      | `core/keymaps.lua` |
+| `<leader>rn` | Rename symbol      | `core/keymaps.lua` |
+| `<leader>nd` | Generate docstring (Neogen) | `plugins/neogen.lua` |
 
 ---
 
@@ -206,7 +209,7 @@
 
 | Shortcut    | Action        | Defined In               |
 | ----------- | ------------- | ------------------------ |
-| `<leader>f` | Format buffer | `plugins/autoformat.lua` |
+| `<leader>cf` | Format buffer (LSP) | `core/keymaps.lua` |
 
 ### Text Objects (Treesitter)
 
@@ -275,7 +278,7 @@
 Your configuration includes LSP servers for:
 
 - **Web:** CSS, ESLint, HTML, Tailwind CSS, TypeScript/JavaScript
-- **Backend:** Go, Python (Pyright + Ruff), JSON
+- **Backend:** Go, Python (ty + Ruff), JSON
 - **DevOps:** Bash, Docker, Docker Compose, Helm, YAML
 - **Mobile/JVM:** Java (jdtls), Kotlin, XML
 - **Documentation:** LaTeX (texlab), Markdown (marksman), Grammar (ltex)

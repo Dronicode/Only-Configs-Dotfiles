@@ -1,3 +1,9 @@
+-- LSP on_attach handler - sets up keymaps when LSP attaches to a buffer
+local keymaps_module = require('core.keymaps')
+local on_attach = function(client, bufnr)
+	keymaps_module.SetupLspKeymaps(bufnr)
+end
+
 local servers = {
 	-- Lua (for Neovim config and plugins)
 	lua_ls = {
@@ -28,8 +34,26 @@ local servers = {
 	-- Backend Development
 	gopls = {}, -- Go language server
 	jsonls = {}, -- JSON config files
-	pyright = {}, -- Python LSP with type checking
-	ruff = {}, -- Fast Python linter
+	ty = {
+		settings = {
+			ty = {
+				diagnosticMode = "workspace",
+				showSyntaxErrors = false,
+			},
+		},
+	}, -- Python type checking and language services
+	ruff = {
+		init_options = {
+			settings = {
+				showSyntaxErrors = true,
+				lint = {
+					select = { "ALL" },
+					ignore = { "F821" },
+					preview = true,
+				},
+			},
+		},
+	}, -- Fast Python linting and formatting
 
 	-- DevOps & Infrastructure
 	--  ansiblels = {}, -- Ansible playbooks
@@ -57,6 +81,12 @@ local servers = {
 	sqlls = {}, -- SQL queries
 }
 
-for server, _ in pairs(servers) do
+for server, config in pairs(servers) do
+	-- Add on_attach to all server configs
+	config.on_attach = on_attach
+
+	if next(config) ~= nil then
+		vim.lsp.config(server, config)
+	end
 	vim.lsp.enable(server)
 end

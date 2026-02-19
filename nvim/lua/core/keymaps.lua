@@ -68,3 +68,33 @@ end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- LSP keymaps (set when LSP attaches to a buffer)
+function SetupLspKeymaps(bufnr)
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+
+	-- Code actions
+	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+
+	-- Formatting
+	vim.keymap.set('n', '<leader>cf', function()
+		vim.lsp.buf.format { async = true }
+	end, opts)
+
+	-- Go to definition
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+
+	-- Go to declaration
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+
+	-- Hover
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+	-- Find references
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+
+	-- Rename
+	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+end
+
+return { SetupLspKeymaps = SetupLspKeymaps }
