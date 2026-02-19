@@ -6,30 +6,49 @@
 
 ## Clipboard Operations
 
-### System Clipboard Integration (tmux-yank plugin)
+### Quick Copy Mode Entry
 
-**Copy Mode:**
+| Shortcut      | Action                  | Note       |
+| ------------- | ----------------------- | ---------- |
+| `Prefix [`    | Enter copy mode         | Default    |
+| `Prefix v`    | Enter copy mode (quick) | Custom     |
 
-1. Enter copy mode: `Prefix [`
-2. Navigate and select text
-3. Copy to system clipboard:
-   - **Normal mode:** `y` - Copy selection to system clipboard
-   - **Normal mode:** `Y` - Copy selection and paste to command line
-   - **Mouse:** Select text and release to auto-copy (if enabled)
+### Copy Mode (Vi-style)
 
-**Copy Mode Navigation:**
+**Selection:**
 
-- `Space` - Start selection
-- `Enter` - Copy selection (to tmux buffer only, without plugin)
-- `v` - Begin selection (vi mode)
-- `V` - Begin line selection (vi mode)
-- `Escape` - Cancel/exit copy mode
-- `q` - Quit copy mode
+| Shortcut | Action                   | Mode       |
+| -------- | ------------------------ | ---------- |
+| `v`      | Begin selection          | Copy mode  |
+| `C-v`    | Toggle rectangle select  | Copy mode  |
+| `y`      | Copy selection           | Copy mode  |
+| `Escape` | Cancel/exit copy mode    | Copy mode  |
+
+**Navigation (standard vi keys in copy mode):**
+
+- `h/j/k/l` - Move cursor (left/down/up/right)
+- `w` - Jump to next word
+- `b` - Jump to previous word
+- `G` - Jump to end of buffer
+- `g` - Jump to start of buffer
+- `f{char}` - Jump to character
+- `?` - Search backward
+- `/` - Search forward
+
+**Copy Mode with tmux-yank plugin:**
+
+| Shortcut | Action                                    | Mode      |
+| -------- | ----------------------------------------- | --------- |
+| `y`      | Copy selection to system clipboard        | Copy mode |
+| `Y`      | Copy selection and paste to command line | Copy mode |
 
 **Pasting:**
 
-- `Prefix ]` - Paste from tmux buffer
-- System clipboard: Use `Ctrl+Shift+V` or middle mouse button (Linux)
+| Shortcut    | Action                  | Note                             |
+| ----------- | ----------------------- | -------------------------------- |
+| `Prefix ]`  | Paste from tmux buffer  | Default tmux                     |
+| `Ctrl+Shift+V` | Paste from system     | Linux terminal (if supported)    |
+| Middle-click | Paste from system       | If mouse is enabled              |
 
 ---
 

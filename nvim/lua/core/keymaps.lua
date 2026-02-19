@@ -73,28 +73,32 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 function SetupLspKeymaps(bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
+	-- Navigation
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = '[G]oto [D]efinition' }))
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, vim.tbl_extend('force', opts, { desc = '[G]oto [D]eclaration' }))
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', opts, { desc = '[G]oto [R]eferences' }))
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.tbl_extend('force', opts, { desc = '[G]oto [I]mplementation' }))
+	vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, vim.tbl_extend('force', opts, { desc = '[G]oto [T]ype definition' }))
+
+	-- Documentation
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, vim.tbl_extend('force', opts, { desc = 'Hover documentation' }))
+	vim.keymap.set('i', '<leader>k', vim.lsp.buf.signature_help, vim.tbl_extend('force', opts, { desc = 'Signature help' }))
+
 	-- Code actions
-	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('force', opts, { desc = '[C]ode [A]ction' }))
+	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = '[R]e[n]ame' }))
 
 	-- Formatting
 	vim.keymap.set('n', '<leader>cf', function()
 		vim.lsp.buf.format { async = true }
-	end, opts)
+	end, vim.tbl_extend('force', opts, { desc = '[C]ode [F]ormat' }))
 
-	-- Go to definition
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-
-	-- Go to declaration
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-
-	-- Hover
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-
-	-- Find references
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-
-	-- Rename
-	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+	-- Workspace
+	vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, vim.tbl_extend('force', opts, { desc = '[W]orkspace [A]dd folder' }))
+	vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, vim.tbl_extend('force', opts, { desc = '[W]orkspace [R]emove folder' }))
+	vim.keymap.set('n', '<leader>wl', function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, vim.tbl_extend('force', opts, { desc = '[W]orkspace [L]ist folders' }))
 end
 
 return { SetupLspKeymaps = SetupLspKeymaps }

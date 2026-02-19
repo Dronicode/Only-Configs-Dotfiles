@@ -88,6 +88,31 @@
 
 ---
 
+## Git Integration (Gitsigns)
+
+### Hunk Navigation
+
+| Shortcut | Action               | Defined In         |
+| -------- | -------------------- | ------------------ |
+| `]c`     | Next git hunk        | `plugins/gitsigns.lua` |
+| `[c`     | Previous git hunk    | `plugins/gitsigns.lua` |
+
+### Hunk Actions
+
+| Shortcut     | Action                     | Mode   | Defined In         |
+| ------------ | -------------------------- | ------ | ------------------ |
+| `<leader>hs` | Stage hunk                 | Normal/Visual | `plugins/gitsigns.lua` |
+| `<leader>hr` | Reset hunk                 | Normal/Visual | `plugins/gitsigns.lua` |
+| `<leader>hS` | Stage entire buffer        | Normal | `plugins/gitsigns.lua` |
+| `<leader>hu` | Undo last stage            | Normal | `plugins/gitsigns.lua` |
+| `<leader>hR` | Reset entire buffer        | Normal | `plugins/gitsigns.lua` |
+| `<leader>hp` | Preview hunk               | Normal | `plugins/gitsigns.lua` |
+| `<leader>hb` | Show blame for line (full) | Normal | `plugins/gitsigns.lua` |
+| `<leader>hd` | Diff hunk                  | Normal | `plugins/gitsigns.lua` |
+| `ih`         | Select hunk (text object)  | Operator/Visual | `plugins/gitsigns.lua` |
+
+---
+
 ## Buffer Management
 
 **Note:** Buffer numbers are visible in the bufferline at the top of your screen.
@@ -190,16 +215,22 @@
 
 ### LSP Actions
 
-| Shortcut     | Action             | Defined In         |
-| ------------ | ------------------ | ------------------ |
-| `gd`         | Go to definition   | `core/keymaps.lua` |
-| `gD`         | Go to declaration  | `core/keymaps.lua` |
-| `gr`         | Go to references   | `core/keymaps.lua` |
-| `K`          | Hover documentation | `core/keymaps.lua` |
-| `<leader>ca` | Code actions (fixes, refactoring) | `core/keymaps.lua` |
-| `<leader>cf` | Format buffer      | `core/keymaps.lua` |
-| `<leader>rn` | Rename symbol      | `core/keymaps.lua` |
-| `<leader>nd` | Generate docstring (Neogen) | `plugins/neogen.lua` |
+| Shortcut     | Action             | Mode | Defined In         |
+| ------------ | ------------------ | ---- | ------------------ |
+| `gd`         | Go to definition   | Normal | `core/keymaps.lua` |
+| `gD`         | Go to declaration  | Normal | `core/keymaps.lua` |
+| `gr`         | Go to references   | Normal | `core/keymaps.lua` |
+| `gi`         | Go to implementation | Normal | `core/keymaps.lua` |
+| `gt`         | Go to type definition | Normal | `core/keymaps.lua` |
+| `K`          | Hover documentation | Normal | `core/keymaps.lua` |
+| `<leader>k`  | Signature help | Insert | `core/keymaps.lua` |
+| `<leader>ca` | Code actions (fixes, refactoring) | Normal | `core/keymaps.lua` |
+| `<leader>cf` | Format buffer      | Normal | `core/keymaps.lua` |
+| `<leader>rn` | Rename symbol      | Normal | `core/keymaps.lua` |
+| `<leader>wa` | Add workspace folder | Normal | `core/keymaps.lua` |
+| `<leader>wr` | Remove workspace folder | Normal | `core/keymaps.lua` |
+| `<leader>wl` | List workspace folders | Normal | `core/keymaps.lua` |
+| `<leader>nd` | Generate docstring (Neogen) | Normal | `plugins/neogen.lua` |
 
 ---
 
@@ -210,6 +241,24 @@
 | Shortcut    | Action        | Defined In               |
 | ----------- | ------------- | ------------------------ |
 | `<leader>cf` | Format buffer (LSP) | `core/keymaps.lua` |
+
+### Commenting (Comment.nvim)
+
+| Shortcut    | Action                        | Mode   | Defined In          |
+| ----------- | ----------------------------- | ------ | ------------------- |
+| `gcc`       | Toggle line comment           | Normal | `plugins/comment.lua` |
+| `gbc`       | Toggle block comment          | Normal | `plugins/comment.lua` |
+| `gc`        | Toggle comment with motion (e.g., `gc3j`) | Normal | `plugins/comment.lua` |
+| `gc`        | Toggle comment on selection   | Visual | `plugins/comment.lua` |
+| `gcd`       | Insert comment below ([d]own)  | Normal | `plugins/comment.lua` |
+| `gcu`       | Insert comment above ([u]p)    | Normal | `plugins/comment.lua` |
+| `gcA`       | Insert comment at end of line | Normal | `plugins/comment.lua` |
+
+**Examples:**
+- `gc3j` - Comment current line + 3 lines below
+- `gc5k` - Comment current line + 5 lines above
+- `gcap` - Comment entire paragraph
+- `gcip` - Comment inner paragraph
 
 ### Text Objects (Treesitter)
 
