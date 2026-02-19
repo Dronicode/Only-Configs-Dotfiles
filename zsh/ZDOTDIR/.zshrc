@@ -55,25 +55,15 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-# Auto-start or attach to tmux session (works, but messes with the integrated terminal in VSC and haven't fixed yet)
-# if command -v tmux >/dev/null 2>&1; then
-#   # Only run if not already inside tmux
-#   if [ -z "$TMUX" ]; then
-#     # Prefer session named "Luffy"
-#     if tmux has-session -t Luffy 2>/dev/null; then
-#       exec tmux attach-session -t Luffy
-#     else
-#       # If any session exists, attach to the first one
-#       existing_session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | head -n 1)
-#       if [ -n "$existing_session" ]; then
-#         exec tmux attach-session -t "$existing_session"
-#       else
-#         # No sessions exist, create "Luffy"
-#         exec tmux new-session -s Luffy
-#       fi
-#     fi
-#   fi
-# fi
-
 # Set terminal title to basename of current directory for tab titles
 precmd() { print -Pn "\e]0;%~\a" }
+
+# pnpm
+export PNPM_HOME="/home/luffy/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+. "$HOME/.local/bin/env"
