@@ -38,8 +38,8 @@ This is especially useful when you don't remember the exact key combination—ju
 
 | Shortcut      | Action                            | Defined In            |
 | ------------- | --------------------------------- | --------------------- |
-| `<leader>w`   | Toggle floating file explorer     | `plugins/neotree.lua` |
-| `<leader>e`   | Toggle left sidebar file explorer | `plugins/neotree.lua` |
+| `<leader>es`  | Toggle left sidebar file explorer | `plugins/neotree.lua` |
+| `<leader>ef`  | Toggle floating file explorer     | `plugins/neotree.lua` |
 | `<leader>ngs` | Open git status window            | `plugins/neotree.lua` |
 
 ### Neo-tree Navigation (within file explorer):
@@ -52,6 +52,21 @@ This is especially useful when you don't remember the exact key combination—ju
 - `x` - Cut file/directory
 - `p` - Paste file/directory
 - `q` - Close neo-tree
+
+---
+
+## Terminal (Toggleterm)
+
+| Shortcut | Action          | Defined In               |
+| -------- | --------------- | ------------------------ |
+| `Ctrl+\` | Toggle terminal | `plugins/toggleterm.lua` |
+
+**Features:**
+
+- Embedded terminal inside nvim (alternative to tmux splits)
+- Persists when you switch buffers
+- Auto-closes when exiting shell
+- Use `Escape` to exit terminal mode and return to normal vim mode
 
 ---
 
@@ -131,6 +146,60 @@ This is especially useful when you don't remember the exact key combination—ju
 | `<leader>hb` | Show blame for line (full) | Normal          | `plugins/gitsigns.lua` |
 | `<leader>hd` | Diff hunk                  | Normal          | `plugins/gitsigns.lua` |
 | `ih`         | Select hunk (text object)  | Operator/Visual | `plugins/gitsigns.lua` |
+
+---
+
+## File Bookmarking (Grapple)
+
+Quickly mark important files and jump between them without needing to search.
+
+| Shortcut    | Action                 | Defined In            |
+| ----------- | ---------------------- | --------------------- |
+| `<leader>m` | Toggle current file    | `plugins/grapple.lua` |
+| `<leader>M` | Show marked files list | `plugins/grapple.lua` |
+| `<leader>g1` | Jump to marked file 1 | `plugins/grapple.lua` |
+| `<leader>g2` | Jump to marked file 2 | `plugins/grapple.lua` |
+| `<leader>g3` | Jump to marked file 3 | `plugins/grapple.lua` |
+| `<leader>g4` | Jump to marked file 4 | `plugins/grapple.lua` |
+
+**Workflow:** Mark files you frequently jump between (config files, main app file, tests), then use `<leader>g1-4` for instant navigation.
+
+---
+
+## Git Diffview
+
+Side-by-side file diffs with full project context. Complements Gitsigns for complex merges and reviewing changes.
+
+| Shortcut      | Action         | Defined In             |
+| ------------- | -------------- | ---------------------- |
+| `<leader>gd`  | Open Diffview  | `plugins/diffview.lua` |
+| `<leader>gce` | Close Diffview | `plugins/diffview.lua` |
+
+**Inside Diffview:**
+
+- `q` - Close Diffview
+- `<Tab>` - Cycle through files
+- `/` - Search in diff
+- `dd` - Toggle diff stat
+
+---
+
+## Undo History (Undotree)
+
+Graphical undo/redo browser. See all your edits as a tree with branches so you never lose work to undo.
+
+| Shortcut    | Action          | Defined In             |
+| ----------- | --------------- | ---------------------- |
+| `<leader>u` | Toggle undotree | `plugins/undotree.lua` |
+
+**Inside Undotree:**
+
+- `<C-j>` / `<C-k>` - Move between undo states
+- `<Enter>` - Jump to selected state
+- `d` - Show diff of that state
+- `q` - Close undotree
+
+**When useful:** Made 20 edits, want to go back to edit #10 but keep the ability to get back to #15 without re-typing everything.
 
 ---
 
@@ -239,9 +308,9 @@ This is especially useful when you don't remember the exact key combination—ju
 
 Beautiful panel showing LSP diagnostics (errors, warnings, info, hints) with filtering options.
 
-| Shortcut     | Action                                 | Defined In          |
-| ------------ | -------------------------------------- | ------------------- |
-| `<leader>da` | Show all diagnostics (entire project) | `plugins/trouble.lua` |
+| Shortcut     | Action                                 | Defined In            |
+| ------------ | -------------------------------------- | --------------------- |
+| `<leader>da` | Show all diagnostics (entire project)  | `plugins/trouble.lua` |
 | `<leader>db` | Show diagnostics (current buffer only) | `plugins/trouble.lua` |
 | `<leader>dl` | Show location list                     | `plugins/trouble.lua` |
 | `<leader>dq` | Show quickfix list                     | `plugins/trouble.lua` |
@@ -298,17 +367,18 @@ Beautiful panel showing LSP diagnostics (errors, warnings, info, hints) with fil
 
 Manipulate brackets, quotes, and tags on existing text.
 
-| Shortcut       | Action                           | Example       | Defined In              |
-| -------------- | -------------------------------- | ------------- | ----------------------- |
-| `ysiw"`        | [Y]ank and [s]urround [iw]ord    | `hello` → `"hello"` | `plugins/surround.lua` |
-| `cs"'`         | [C]hange [s]urrounding quotes    | `"hi"` → `'hi'` | `plugins/surround.lua` |
-| `ds"`          | [D]elete [s]urrounding quotes    | `"hi"` → `hi` | `plugins/surround.lua` |
-| `ysip{`        | Surround [i]nner [p]aragraph     | Wraps paragraph with `{}` | `plugins/surround.lua` |
-| `yslb`         | Surround current [l]ine with `b` | Wraps line with `()`  | `plugins/surround.lua` |
+| Shortcut | Action                           | Example                   | Defined In             |
+| -------- | -------------------------------- | ------------------------- | ---------------------- |
+| `ysiw"`  | [Y]ank and [s]urround [iw]ord    | `hello` → `"hello"`       | `plugins/surround.lua` |
+| `cs"'`   | [C]hange [s]urrounding quotes    | `"hi"` → `'hi'`           | `plugins/surround.lua` |
+| `ds"`    | [D]elete [s]urrounding quotes    | `"hi"` → `hi`             | `plugins/surround.lua` |
+| `ysip{`  | Surround [i]nner [p]aragraph     | Wraps paragraph with `{}` | `plugins/surround.lua` |
+| `yslb`   | Surround current [l]ine with `b` | Wraps line with `()`      | `plugins/surround.lua` |
 
 **Common brackets:** `(`, `)`, `[`, `]`, `{`, `}`, `<`, `>`, `"`
 
 **Mnemonic:**
+
 - `ys` = [y]ank and [s]urround (add)
 - `cs` = [c]hange [s]urrounding
 - `ds` = [d]elete [s]urrounding
@@ -333,11 +403,11 @@ Manipulate brackets, quotes, and tags on existing text.
 
 ### Incremental Selection
 
-| Shortcut    | Action                   | Defined In               |
-| ----------- | ------------------------ | ------------------------ |
-| `<C-space>` | Init/increment selection | `plugins/treesitter.lua` |
-| `<C-s>`     | Increment scope          | `plugins/treesitter.lua` |
-| `<M-space>` | Decrement selection      | `plugins/treesitter.lua` |
+| Shortcut | Action                   | Defined In               |
+| -------- | ------------------------ | ------------------------ |
+| `<C-i>`  | Init/increment selection | `plugins/treesitter.lua` |
+| `<C-s>`  | Increment scope          | `plugins/treesitter.lua` |
+| `<M-i>`  | Decrement selection      | `plugins/treesitter.lua` |
 
 ---
 
@@ -372,6 +442,42 @@ Manipulate brackets, quotes, and tags on existing text.
   - `<C-e>` - Hide menu
   - `<C-k>` - Toggle signature help
   - `<Tab>` / `<S-Tab>` - Navigate snippet expansion
+
+---
+
+## AI Code Assistance (GitHub Copilot)
+
+### Inline Code Suggestions
+
+AI-powered code suggestions that are context-aware to your codebase.
+
+| Shortcut | Action            | Mode   | Defined In                 |
+| -------- | ----------------- | ------ | -------------------------- |
+| `<C-J>`  | Accept suggestion | Insert | `plugins/copilot-chat.lua` |
+
+### Copilot Chat Commands
+
+Interactive chat with AI for code explanation, review, fixes, tests, and more.
+
+| Shortcut     | Action         | Mode          | Defined In                 |
+| ------------ | -------------- | ------------- | -------------------------- |
+| `<leader>cc` | Toggle chat    | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>cq` | Quick question | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>ce` | Explain code   | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>cr` | Review code    | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>cx` | Fix code       | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>co` | Optimize code  | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>ct` | Generate tests | Normal/Visual | `plugins/copilot-chat.lua` |
+| `<leader>cd` | Generate docs  | Normal/Visual | `plugins/copilot-chat.lua` |
+
+**Usage Examples:**
+
+- Select code and press `<leader>ce` → AI explains what it does
+- At cursor position, `<leader>cc` → Toggle chat panel for conversation
+- Visual selection + `<leader>ct` → Generate unit tests
+- `<leader>cq` → Ask a quick question without opening chat panel
+
+**Note:** Requires active GitHub Copilot subscription and authentication.
 
 ---
 

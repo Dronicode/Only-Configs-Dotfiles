@@ -372,6 +372,58 @@ Your prompt can show:
 
 ---
 
+## FZF Integration (Fuzzy Finder)
+
+Powerful fuzzy finding for files, directories, history, and more. Integrated into zsh with smart defaults.
+
+### Main Keybindings
+
+| Shortcut    | Action                      | Defined In     |
+| ----------- | --------------------------- | -------------- |
+| `<Ctrl+T>`  | Fuzzy find and insert file  | `.zshrc` (fzf) |
+| `<Ctrl+R>`  | Fuzzy search command history | `.zshrc` (fzf) |
+| `<Alt+C>`   | Fuzzy find and cd to directory | `.zshrc` (fzf) |
+
+### Usage Examples
+
+**Opening files in editor:**
+```bash
+nvim <Ctrl+T>
+# Opens fuzzy finder, select file, opens in nvim
+```
+
+**Navigating directories:**
+```bash
+<Alt+C>
+# Browse directories, select one, instantly cd there
+```
+
+**Searching history:**
+```bash
+<Ctrl+R> git push
+# Fuzzy search through command history containing "git push"
+```
+
+**Killing processes:**
+```bash
+kill -9 $(ps aux | fzf)
+# Browse running processes, select one, kill it
+```
+
+**Find and open in less:**
+```bash
+<Ctrl+T> | xargs less
+# Find file and open in pager (chained with other commands)
+```
+
+### Configuration
+
+**Default search command:** Uses `rg` (ripgrep) for fast, smart searching
+**Ignores:** Hidden files, `.git`, and respects `.gitignore`
+**History options:** Reverse sort, most recent first
+
+---
+
 ## Tips & Workflows
 
 ### Command History Workflow
@@ -385,22 +437,6 @@ git pu
 
 # Or use Ctrl+R for fuzzy search
 <Ctrl+R> git push  # Fuzzy search through all history
-```
-
-### FZF Integration Workflow
-
-```bash
-# Quick file editing
-nvim <Ctrl+T>
-# Opens fuzzy finder, select file, nvim opens it
-
-# Quick directory change
-<Alt+C>
-# Browse directories, select one, instantly cd there
-
-# Kill process interactively
-kill -9 $(ps aux | fzf)
-# Browse running processes, select one, kill it
 ```
 
 ### Alias Discovery

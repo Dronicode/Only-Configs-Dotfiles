@@ -45,6 +45,16 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':omz:plugins:alias-finder' autoload yes
 
+# FZF Integration
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-file ~/.config/fd/ignore'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS='--reverse --sort'
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+# FZF keybindings
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
 # Load keybindings
 if [ -f "$ZDOTDIR/.keybinds" ]; then
     source "$ZDOTDIR/.keybinds"

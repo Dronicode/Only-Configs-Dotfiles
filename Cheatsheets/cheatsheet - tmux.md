@@ -219,16 +219,38 @@ tmux rename-session -t old_name new_name
 
 ---
 
-## Session Persistence (tmux-resurrect)
+## Session Persistence (tmux-resurrect & tmux-continuum)
 
-The `tmux-resurrect` plugin saves and restores tmux sessions:
+### Manual Saving & Restoring
+
+The `tmux-resurrect` plugin saves and restores tmux sessions manually:
 
 | Shortcut        | Action               | Plugin         |
 | --------------- | -------------------- | -------------- |
 | `Prefix Ctrl-s` | Save tmux session    | tmux-resurrect |
 | `Prefix Ctrl-r` | Restore tmux session | tmux-resurrect |
 
-**What gets saved:**
+**What gets saved:** All windows, panes, layout, and running processes (with strategy for specific apps like nvim).
+
+### Automatic Saving & Restoring (tmux-continuum)
+
+`tmux-continuum` automatically saves your session every 15 minutes and restores it when tmux starts—no manual intervention needed.
+
+**Auto-restore behavior:**
+- On first tmux start after install: You'll be attached to the last saved session automatically
+- Subsequent starts: Same session and layout restored
+- Sessions are auto-saved every 15 minutes in background
+
+**When to use manually:**
+- `Prefix Ctrl-s` - Save before something risky (e.g., major refactoring)
+- `Prefix Ctrl-r` - Restore if something corrupts (though auto-restore usually handles it)
+
+**How to check what was saved:**
+```bash
+cat ~/.local/share/tmux/resurrect/last  # Shows timestamp and details of last save
+```
+
+---**What gets saved:**
 
 - All sessions, windows, and panes
 - Window/pane layouts
