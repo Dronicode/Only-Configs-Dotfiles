@@ -22,6 +22,9 @@ return {
     local actions = require 'telescope.actions'
     local builtin = require 'telescope.builtin'
 
+    -- Toggle state for hidden files
+    local show_hidden = true
+
     require('telescope').setup {
       defaults = {
         layout_strategy = 'horizontal',
@@ -32,6 +35,20 @@ return {
             width = { padding = 0 },
             height = { padding = 0 },
           },
+        },
+        file_ignore_patterns = {
+          'node_modules', '.git', '.venv',
+          '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
+        },
+        vimgrep_arguments = {
+          'rg',
+          '--color=always',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--trim',
         },
         mappings = {
           i = {
@@ -46,8 +63,11 @@ return {
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-          hidden = true,
+          file_ignore_patterns = {
+            'node_modules', '.git', '.venv',
+            '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
+          },
+          hidden = show_hidden,
         },
         buffers = {
           initial_mode = 'normal',
@@ -68,9 +88,12 @@ return {
         },
       },
       live_grep = {
-        file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+        file_ignore_patterns = {
+          'node_modules', '.git', '.venv',
+          '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
+        },
         additional_args = function(_)
-          return { '--hidden' }
+          return show_hidden and { '--hidden' } or {}
         end,
       },
       path_display = {
@@ -123,5 +146,11 @@ return {
         previewer = false,
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
+
+    -- Toggle hidden files visibility in telescope
+    vim.keymap.set('n', '<leader>th', function()
+      show_hidden = not show_hidden
+      vim.notify('Show hidden files: ' .. (show_hidden and 'ON (visible)' or 'OFF (hidden)'))
+    end, { desc = '[T]elescope toggle [H]idden files' })
   end,
 }

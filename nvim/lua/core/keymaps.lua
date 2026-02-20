@@ -34,6 +34,7 @@ vim.keymap.set('n', '<leader>>', '<C-w>v', opts) -- split window vertically (lea
 vim.keymap.set('n', '<leader><', '<C-w>s', opts) -- split window horizontally (leader + <)
 vim.keymap.set('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
 vim.keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
+vim.keymap.set('n', '<leader>sx', '<C-w>x', opts) -- [s]wap split windows e[x]change
 
 -- Navigate between splits
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)

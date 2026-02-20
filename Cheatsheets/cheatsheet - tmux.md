@@ -52,6 +52,37 @@
 
 ---
 
+## File Sidebar (tmux-sidebar plugin)
+
+The sidebar provides a file tree view of your current directory with icons (using eza).
+
+**Opening the sidebar:**
+
+The tmux-sidebar plugin uses the following keybindings (try them in order):
+
+| Shortcut   | Action              | Note           |
+| ---------- | ------------------- | -------------- |
+| `Prefix T` | Toggle sidebar      | Standard (try first) |
+| `Prefix C-f` | Toggle sidebar    | Alternative   |
+
+If neither works, reload tmux config: `Prefix :` → `source-file ~/.config/tmux/tmux.conf` → try again
+
+**Using the sidebar:**
+
+Once open:
+
+| Shortcut | Action           | Note |
+| -------- | ---------------- | ---- |
+| `Enter`  | Open file/folder | Open selected file or expand directory |
+| `q`      | Close sidebar    | Exit sidebar view |
+| `j/k`    | Navigate up/down | Move between files |
+| `h/l`    | Collapse/expand  | Fold/unfold directories |
+| `/`      | Search           | Search for files (depends on plugin version) |
+
+The sidebar shows file/folder icons via **eza**, matching your nvim neo-tree and zsh `ll` output.
+
+---
+
 ## Window Management
 
 ### Basic Window Operations
@@ -71,6 +102,21 @@
 | `Prefix p`   | Previous window              | Default tmux |
 | `Prefix 0-9` | Switch to window number      | Default tmux |
 | `Prefix l`   | Switch to last active window | Default tmux |
+
+### Session Management
+
+| Shortcut | Action                              | Note                |
+| -------- | ----------------------------------- | ------------------- |
+| `Prefix s` | Fuzzy switch session                | Custom (uses fzf)   |
+
+**How it works:**
+- Press `Prefix s` (Ctrl-b then s)
+- A fuzzy search menu appears with all your sessions
+- Type to filter sessions
+- Press Enter to switch to selected session
+- Press Escape to cancel
+
+(Default tmux session listing is `Prefix)`; this replaces it with fuzzy search)
 
 ---
 
@@ -199,6 +245,23 @@ The `tmux-sidebar` plugin provides a directory tree:
 | ------------------ | ---------------------------------- | ------------ |
 | `Prefix Tab`       | Toggle sidebar with directory tree | tmux-sidebar |
 | `Prefix Backspace` | Toggle sidebar with file list      | tmux-sidebar |
+
+---
+
+## Quick Popups
+
+Open temporary overlay windows for quick tasks without disrupting your layout:
+
+| Shortcut        | Action                           | Type     |
+| --------------- | -------------------------------- | -------- |
+| `Prefix Ctrl-g` | Open quick terminal popup (80%)  | Custom   |
+| `Prefix g`      | Open git status popup (80%)      | Custom   |
+
+**Features:**
+- Popups appear as overlays over your current layout
+- Close with `exit` or `Ctrl-d` to return to normal view
+- Uses current directory as working directory
+- Useful for quick commands without disrupting split layout
 
 ---
 

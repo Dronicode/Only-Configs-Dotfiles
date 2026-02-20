@@ -4,6 +4,27 @@
 
 ---
 
+## Which-Key (Keybinding Discovery)
+
+**What it does:** After pressing `<leader>` (space), which-key shows a popup menu with all available keybindings and their descriptions. This helps you discover and remember shortcuts.
+
+**Usage:**
+
+1. Press `<leader>` (space) and **wait ~300ms** (or immediately see popup)
+2. A popup appears showing all available `<leader>` prefixed keybindings
+3. Press the next key to execute that command or see sub-commands
+4. Press `Escape` to close without executing
+
+**Example:**
+
+- Press `<leader>` → see all available commands
+- Press `<leader>c` → see all commands starting with `<leader>c` (code actions, comments, etc.)
+- Press `<leader>ca` → executes code action
+
+This is especially useful when you don't remember the exact key combination—just press leader and browse!
+
+---
+
 ## Clipboard Operations
 
 - **System Clipboard:** Automatically synced with system clipboard via `clipboard=unnamedplus`
@@ -38,14 +59,12 @@
 
 ### File & Buffer Search
 
-| Shortcut           | Action                         | Defined In              |
-| ------------------ | ------------------------------ | ----------------------- |
-| `<leader>sf`       | Search files                   | `plugins/telescope.lua` |
-| `<leader>sb`       | Search existing buffers        | `plugins/telescope.lua` |
-| `<leader><tab>`    | Search existing buffers (alt)  | `plugins/telescope.lua` |
-| `<leader><leader>` | Find existing buffers (alt)    | `plugins/telescope.lua` |
-| `<leader>so`       | Search recent files (oldfiles) | `plugins/telescope.lua` |
-| `<leader>sm`       | Search marks                   | `plugins/telescope.lua` |
+| Shortcut     | Action                         | Defined In              |
+| ------------ | ------------------------------ | ----------------------- |
+| `<leader>sf` | Search files                   | `plugins/telescope.lua` |
+| `<leader>sb` | Search existing buffers        | `plugins/telescope.lua` |
+| `<leader>so` | Search recent files (oldfiles) | `plugins/telescope.lua` |
+| `<leader>sm` | Search marks                   | `plugins/telescope.lua` |
 
 ### Git Integration
 
@@ -74,6 +93,8 @@
 | `<leader>sds` | Search LSP document symbols | `plugins/telescope.lua` |
 | `<leader>sh`  | Search help tags            | `plugins/telescope.lua` |
 | `<leader>sr`  | Resume last search          | `plugins/telescope.lua` |
+| `<leader>da`  | Trouble: all diagnostics    | `plugins/trouble.lua`   |
+| `<leader>db`  | Trouble: buffer diagnostics | `plugins/trouble.lua`   |
 
 ### Telescope Navigation (within finder):
 
@@ -92,23 +113,23 @@
 
 ### Hunk Navigation
 
-| Shortcut | Action               | Defined In         |
-| -------- | -------------------- | ------------------ |
-| `]c`     | Next git hunk        | `plugins/gitsigns.lua` |
-| `[c`     | Previous git hunk    | `plugins/gitsigns.lua` |
+| Shortcut | Action            | Defined In             |
+| -------- | ----------------- | ---------------------- |
+| `]c`     | Next git hunk     | `plugins/gitsigns.lua` |
+| `[c`     | Previous git hunk | `plugins/gitsigns.lua` |
 
 ### Hunk Actions
 
-| Shortcut     | Action                     | Mode   | Defined In         |
-| ------------ | -------------------------- | ------ | ------------------ |
-| `<leader>hs` | Stage hunk                 | Normal/Visual | `plugins/gitsigns.lua` |
-| `<leader>hr` | Reset hunk                 | Normal/Visual | `plugins/gitsigns.lua` |
-| `<leader>hS` | Stage entire buffer        | Normal | `plugins/gitsigns.lua` |
-| `<leader>hu` | Undo last stage            | Normal | `plugins/gitsigns.lua` |
-| `<leader>hR` | Reset entire buffer        | Normal | `plugins/gitsigns.lua` |
-| `<leader>hp` | Preview hunk               | Normal | `plugins/gitsigns.lua` |
-| `<leader>hb` | Show blame for line (full) | Normal | `plugins/gitsigns.lua` |
-| `<leader>hd` | Diff hunk                  | Normal | `plugins/gitsigns.lua` |
+| Shortcut     | Action                     | Mode            | Defined In             |
+| ------------ | -------------------------- | --------------- | ---------------------- |
+| `<leader>hs` | Stage hunk                 | Normal/Visual   | `plugins/gitsigns.lua` |
+| `<leader>hr` | Reset hunk                 | Normal/Visual   | `plugins/gitsigns.lua` |
+| `<leader>hS` | Stage entire buffer        | Normal          | `plugins/gitsigns.lua` |
+| `<leader>hu` | Undo last stage            | Normal          | `plugins/gitsigns.lua` |
+| `<leader>hR` | Reset entire buffer        | Normal          | `plugins/gitsigns.lua` |
+| `<leader>hp` | Preview hunk               | Normal          | `plugins/gitsigns.lua` |
+| `<leader>hb` | Show blame for line (full) | Normal          | `plugins/gitsigns.lua` |
+| `<leader>hd` | Diff hunk                  | Normal          | `plugins/gitsigns.lua` |
 | `ih`         | Select hunk (text object)  | Operator/Visual | `plugins/gitsigns.lua` |
 
 ---
@@ -139,6 +160,7 @@
 | `<leader><`  | Split window horizontally     | `core/keymaps.lua` |
 | `<leader>se` | Make split windows equal size | `core/keymaps.lua` |
 | `<leader>xs` | Close current split window    | `core/keymaps.lua` |
+| `<leader>sx` | Swap split windows            | `core/keymaps.lua` |
 
 ### Navigate Between Splits
 
@@ -213,24 +235,35 @@
 | `<leader>d` | Open floating diagnostic message | `core/keymaps.lua` |
 | `<leader>q` | Open diagnostics list            | `core/keymaps.lua` |
 
+### Trouble.nvim - Diagnostics Viewer
+
+Beautiful panel showing LSP diagnostics (errors, warnings, info, hints) with filtering options.
+
+| Shortcut     | Action                                 | Defined In          |
+| ------------ | -------------------------------------- | ------------------- |
+| `<leader>da` | Show all diagnostics (entire project) | `plugins/trouble.lua` |
+| `<leader>db` | Show diagnostics (current buffer only) | `plugins/trouble.lua` |
+| `<leader>dl` | Show location list                     | `plugins/trouble.lua` |
+| `<leader>dq` | Show quickfix list                     | `plugins/trouble.lua` |
+
 ### LSP Actions
 
-| Shortcut     | Action             | Mode | Defined In         |
-| ------------ | ------------------ | ---- | ------------------ |
-| `gd`         | Go to definition   | Normal | `core/keymaps.lua` |
-| `gD`         | Go to declaration  | Normal | `core/keymaps.lua` |
-| `gr`         | Go to references   | Normal | `core/keymaps.lua` |
-| `gi`         | Go to implementation | Normal | `core/keymaps.lua` |
-| `gt`         | Go to type definition | Normal | `core/keymaps.lua` |
-| `K`          | Hover documentation | Normal | `core/keymaps.lua` |
-| `<leader>k`  | Signature help | Insert | `core/keymaps.lua` |
-| `<leader>ca` | Code actions (fixes, refactoring) | Normal | `core/keymaps.lua` |
-| `<leader>cf` | Format buffer      | Normal | `core/keymaps.lua` |
-| `<leader>rn` | Rename symbol      | Normal | `core/keymaps.lua` |
-| `<leader>wa` | Add workspace folder | Normal | `core/keymaps.lua` |
-| `<leader>wr` | Remove workspace folder | Normal | `core/keymaps.lua` |
-| `<leader>wl` | List workspace folders | Normal | `core/keymaps.lua` |
-| `<leader>nd` | Generate docstring (Neogen) | Normal | `plugins/neogen.lua` |
+| Shortcut     | Action                            | Mode   | Defined In           |
+| ------------ | --------------------------------- | ------ | -------------------- |
+| `gd`         | Go to definition                  | Normal | `core/keymaps.lua`   |
+| `gD`         | Go to declaration                 | Normal | `core/keymaps.lua`   |
+| `gr`         | Go to references                  | Normal | `core/keymaps.lua`   |
+| `gi`         | Go to implementation              | Normal | `core/keymaps.lua`   |
+| `gt`         | Go to type definition             | Normal | `core/keymaps.lua`   |
+| `K`          | Hover documentation               | Normal | `core/keymaps.lua`   |
+| `<leader>k`  | Signature help                    | Insert | `core/keymaps.lua`   |
+| `<leader>ca` | Code actions (fixes, refactoring) | Normal | `core/keymaps.lua`   |
+| `<leader>cf` | Format buffer                     | Normal | `core/keymaps.lua`   |
+| `<leader>rn` | Rename symbol                     | Normal | `core/keymaps.lua`   |
+| `<leader>wa` | Add workspace folder              | Normal | `core/keymaps.lua`   |
+| `<leader>wr` | Remove workspace folder           | Normal | `core/keymaps.lua`   |
+| `<leader>wl` | List workspace folders            | Normal | `core/keymaps.lua`   |
+| `<leader>nd` | Generate docstring (Neogen)       | Normal | `plugins/neogen.lua` |
 
 ---
 
@@ -238,27 +271,47 @@
 
 ### Formatting
 
-| Shortcut    | Action        | Defined In               |
-| ----------- | ------------- | ------------------------ |
+| Shortcut     | Action              | Defined In         |
+| ------------ | ------------------- | ------------------ |
 | `<leader>cf` | Format buffer (LSP) | `core/keymaps.lua` |
 
 ### Commenting (Comment.nvim)
 
-| Shortcut    | Action                        | Mode   | Defined In          |
-| ----------- | ----------------------------- | ------ | ------------------- |
-| `gcc`       | Toggle line comment           | Normal | `plugins/comment.lua` |
-| `gbc`       | Toggle block comment          | Normal | `plugins/comment.lua` |
-| `gc`        | Toggle comment with motion (e.g., `gc3j`) | Normal | `plugins/comment.lua` |
-| `gc`        | Toggle comment on selection   | Visual | `plugins/comment.lua` |
-| `gcd`       | Insert comment below ([d]own)  | Normal | `plugins/comment.lua` |
-| `gcu`       | Insert comment above ([u]p)    | Normal | `plugins/comment.lua` |
-| `gcA`       | Insert comment at end of line | Normal | `plugins/comment.lua` |
+| Shortcut | Action                                    | Mode   | Defined In            |
+| -------- | ----------------------------------------- | ------ | --------------------- |
+| `gcc`    | Toggle line comment                       | Normal | `plugins/comment.lua` |
+| `gbc`    | Toggle block comment                      | Normal | `plugins/comment.lua` |
+| `gc`     | Toggle comment with motion (e.g., `gc3j`) | Normal | `plugins/comment.lua` |
+| `gc`     | Toggle comment on selection               | Visual | `plugins/comment.lua` |
+| `gcd`    | Insert comment below ([d]own)             | Normal | `plugins/comment.lua` |
+| `gcu`    | Insert comment above ([u]p)               | Normal | `plugins/comment.lua` |
+| `gcA`    | Insert comment at end of line             | Normal | `plugins/comment.lua` |
 
 **Examples:**
+
 - `gc3j` - Comment current line + 3 lines below
 - `gc5k` - Comment current line + 5 lines above
 - `gcap` - Comment entire paragraph
 - `gcip` - Comment inner paragraph
+
+### Surround (nvim-surround)
+
+Manipulate brackets, quotes, and tags on existing text.
+
+| Shortcut       | Action                           | Example       | Defined In              |
+| -------------- | -------------------------------- | ------------- | ----------------------- |
+| `ysiw"`        | [Y]ank and [s]urround [iw]ord    | `hello` → `"hello"` | `plugins/surround.lua` |
+| `cs"'`         | [C]hange [s]urrounding quotes    | `"hi"` → `'hi'` | `plugins/surround.lua` |
+| `ds"`          | [D]elete [s]urrounding quotes    | `"hi"` → `hi` | `plugins/surround.lua` |
+| `ysip{`        | Surround [i]nner [p]aragraph     | Wraps paragraph with `{}` | `plugins/surround.lua` |
+| `yslb`         | Surround current [l]ine with `b` | Wraps line with `()`  | `plugins/surround.lua` |
+
+**Common brackets:** `(`, `)`, `[`, `]`, `{`, `}`, `<`, `>`, `"`
+
+**Mnemonic:**
+- `ys` = [y]ank and [s]urround (add)
+- `cs` = [c]hange [s]urrounding
+- `ds` = [d]elete [s]urrounding
 
 ### Text Objects (Treesitter)
 

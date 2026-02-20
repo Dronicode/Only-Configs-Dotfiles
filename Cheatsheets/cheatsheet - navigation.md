@@ -16,7 +16,8 @@ Panes are the split views inside a tab/window. Use these for layout and switchin
 | ---------------- | ------------------- | ------------------- | ------------- |
 | Vertical split   | `Alt+Shift+>`       | `Prefix >`          | `<leader>>`   |
 | Horizontal split | `Alt+Shift+<`       | `Prefix <`          | `<leader><`   |
-| Close pane       | `Alt+Shift+q`       | `Prefix q`          | `<leader>q`   |
+| Close pane       | `Alt+Shift+q`       | `Prefix q`          | `<leader>xs`  |
+| Swap panes       | n/a                 | n/a                 | `<leader>sx`  |
 | Move focus       | `Alt+Shift+h/j/k/l` | `Ctrl-h/j/k/l`      | `<C-h/j/k/l>` |
 | Resize pane      | `Alt+Shift+Arrow`   | `Prefix Ctrl+Arrow` | `<C-Arrow>`   |
 | Cycle panes      | n/a                 | `Prefix o`          | `<C-w>w/W`    |
@@ -52,11 +53,12 @@ Notes:
 
 ## Sessions / Workspaces
 
-| Action        | WezTerm | Tmux                         | Neovim |
-| ------------- | ------- | ---------------------------- | ------ |
-| New session   | n/a     | `tmux new -s name`           | n/a    |
-| List / attach | n/a     | `tmux ls` / `tmux attach -t` | n/a    |
-| Rename        | n/a     | `tmux rename-session`        | n/a    |
+| Action         | WezTerm | Tmux                         | Neovim |
+| -------------- | ------- | ---------------------------- | ------ |
+| New session    | n/a     | `tmux new -s name`           | n/a    |
+| List / attach  | n/a     | `tmux ls` / `tmux attach -t` | n/a    |
+| Switch (fuzzy) | n/a     | `Prefix s`                   | n/a    |
+| Rename         | n/a     | `tmux rename-session`        | n/a    |
 
 ## Search in terminal
 

@@ -16,8 +16,16 @@ export CONF="$HOME/.config"
 
 # History and completion settings
 HISTFILE=$ZDOTDIR/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=50000
+
+# Better history sharing and behavior
+setopt APPEND_HISTORY          # Append history when shell exits (not immediately)
+setopt SHARE_HISTORY           # Share history between sessions (after appending)
+setopt HIST_IGNORE_DUPS        # Don't record duplicates
+setopt HIST_IGNORE_SPACE       # Ignore commands starting with space
+setopt HIST_REDUCE_BLANKS      # Remove superfluous blanks
+setopt HIST_VERIFY             # Verify before executing from history
 
 autoload -Uz compinit
 compinit -d $ZDOTDIR/.zcompdump
