@@ -83,13 +83,13 @@ This is especially useful when you don't remember the exact key combination—ju
 
 ### Git Integration
 
-| Shortcut      | Action                              | Defined In              |
-| ------------- | ----------------------------------- | ----------------------- |
-| `<leader>gf`  | Search git files                    | `plugins/telescope.lua` |
-| `<leader>gc`  | Search git commits                  | `plugins/telescope.lua` |
-| `<leader>gcf` | Search git commits for current file | `plugins/telescope.lua` |
-| `<leader>gb`  | Search git branches                 | `plugins/telescope.lua` |
-| `<leader>gs`  | Search git status (diff view)       | `plugins/telescope.lua` |
+| Shortcut     | Action                                | Defined In              |
+| ------------ | ------------------------------------- | ----------------------- |
+| `<leader>gf` | Search git files                      | `plugins/telescope.lua` |
+| `<leader>gc` | Search git commits                    | `plugins/telescope.lua` |
+| `<leader>gh` | Search git history (commits for file) | `plugins/telescope.lua` |
+| `<leader>gb` | Search git branches                   | `plugins/telescope.lua` |
+| `<leader>gs` | Search git status (diff view)         | `plugins/telescope.lua` |
 
 ### Content Search
 
@@ -153,14 +153,14 @@ This is especially useful when you don't remember the exact key combination—ju
 
 Quickly mark important files and jump between them without needing to search.
 
-| Shortcut    | Action                 | Defined In            |
-| ----------- | ---------------------- | --------------------- |
-| `<leader>m` | Toggle current file    | `plugins/grapple.lua` |
-| `<leader>M` | Show marked files list | `plugins/grapple.lua` |
-| `<leader>g1` | Jump to marked file 1 | `plugins/grapple.lua` |
-| `<leader>g2` | Jump to marked file 2 | `plugins/grapple.lua` |
-| `<leader>g3` | Jump to marked file 3 | `plugins/grapple.lua` |
-| `<leader>g4` | Jump to marked file 4 | `plugins/grapple.lua` |
+| Shortcut     | Action                 | Defined In            |
+| ------------ | ---------------------- | --------------------- |
+| `<leader>m`  | Toggle current file    | `plugins/grapple.lua` |
+| `<leader>M`  | Show marked files list | `plugins/grapple.lua` |
+| `<leader>g1` | Jump to marked file 1  | `plugins/grapple.lua` |
+| `<leader>g2` | Jump to marked file 2  | `plugins/grapple.lua` |
+| `<leader>g3` | Jump to marked file 3  | `plugins/grapple.lua` |
+| `<leader>g4` | Jump to marked file 4  | `plugins/grapple.lua` |
 
 **Workflow:** Mark files you frequently jump between (config files, main app file, tests), then use `<leader>g1-4` for instant navigation.
 
