@@ -73,8 +73,20 @@ local servers = {
 	--  omnisharp = {}, -- C# for Godot/Unity
 
 	-- Documentation & Writing
-	ltex = {}, -- Grammar checking in Markdown/LaTeX
-	marksman = {}, -- Markdown editing (Obsidian, docs)
+	ltex = {
+		filetypes = { "markdown", "text", "gitcommit", "tex", "plaintex", "rst", "org" },
+		cmd_env = {
+			JAVA_OPTS = "-Djdk.xml.totalEntitySizeLimit=0 --enable-native-access=ALL-UNNAMED",
+		},
+		settings = {
+			ltex = {
+				language = "en-US",
+			},
+		},
+	}, -- Grammar checking in Markdown/LaTeX
+	marksman = {
+		filetypes = { "markdown", "markdown.mdx", "quarto" },
+	}, -- Markdown editing (Obsidian, docs)
 	texlab = {}, -- LaTeX editing
 
 	-- Data & Query Languages

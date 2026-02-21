@@ -85,17 +85,17 @@ This is especially useful when you don't remember the exact key combination—ju
 
 | Shortcut     | Action                                | Defined In              |
 | ------------ | ------------------------------------- | ----------------------- |
-| `<leader>gf` | Search git files                      | `plugins/telescope.lua` |
-| `<leader>gc` | Search git commits                    | `plugins/telescope.lua` |
-| `<leader>gh` | Search git history (commits for file) | `plugins/telescope.lua` |
-| `<leader>gb` | Search git branches                   | `plugins/telescope.lua` |
-| `<leader>gs` | Search git status (diff view)         | `plugins/telescope.lua` |
+| `<leader>sgf` | Search git files                      | `plugins/telescope.lua` |
+| `<leader>sgc` | Search git commits                    | `plugins/telescope.lua` |
+| `<leader>sgh` | Search git history (commits for file) | `plugins/telescope.lua` |
+| `<leader>sgb` | Search git branches                   | `plugins/telescope.lua` |
+| `<leader>sgs` | Search git status (diff view)         | `plugins/telescope.lua` |
 
 ### Content Search
 
 | Shortcut     | Action                           | Defined In              |
 | ------------ | -------------------------------- | ----------------------- |
-| `<leader>sg` | Live grep (search text in files) | `plugins/telescope.lua` |
+| `<leader>sgr` | Live grep (search text in files) | `plugins/telescope.lua` |
 | `<leader>sw` | Search current word under cursor | `plugins/telescope.lua` |
 | `<leader>s/` | Live grep in open files          | `plugins/telescope.lua` |
 | `<leader>/`  | Fuzzy search in current buffer   | `plugins/telescope.lua` |

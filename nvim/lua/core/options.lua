@@ -54,6 +54,17 @@ local diagnostic_symbols = {
 	[vim.diagnostic.severity.HINT] = "󰌵",
 }
 
+local function diagnostic_code_suffix(diagnostic)
+	local code = diagnostic.code
+	if type(code) == "table" then
+		code = code.value or code.target or code.code
+	end
+	if code == nil or code == "" then
+		return ""
+	end
+	return " [" .. tostring(code) .. "]"
+end
+
 vim.diagnostic.config({
 	virtual_text = {
 		-- don't show the LSP/source name inline; keep it in floats
@@ -61,6 +72,9 @@ vim.diagnostic.config({
 		severity = { min = vim.diagnostic.severity.HINT },
 		prefix = function(diagnostic)
 			return diagnostic_symbols[diagnostic.severity] or ""
+		end,
+		format = function(diagnostic)
+			return diagnostic.message .. diagnostic_code_suffix(diagnostic)
 		end,
 	},
 	underline = true,
