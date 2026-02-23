@@ -77,11 +77,11 @@ Notes:
 | Search word (grep) in CWD               | n/a     | n/a  | `<leader>sg`  |
 | Search word under cursor (grep) in CWD  | n/a     | n/a  | `<leader>sw`  |
 | Search file (all) by name in CWD        | n/a     | n/a  | `<leader>sf`  |
-| Search file (git tracked) in repository | n/a     | n/a  | `<leader>gf`  |
+| Search file (git tracked) in repository | n/a     | n/a  | `<leader>sgf` |
 | Search file by name in history (old)    | n/a     | n/a  | `<leader>so`  |
 | Search open buffers                     | n/a     | n/a  | `<leader>sb`  |
 | Search LSP (document symbols)           | n/a     | n/a  | `<leader>sds` |
 | Search diagnostics                      | n/a     | n/a  | `<leader>sd`  |
 | Search help                             | n/a     | n/a  | `<leader>sh`  |
-| Search git repository commits           | n/a     | n/a  | `<leader>gc`  |
-| Search git repository branches          | n/a     | n/a  | `<leader>gb`  |
+| Search git repository commits           | n/a     | n/a  | `<leader>sgc` |
+| Search git repository branches          | n/a     | n/a  | `<leader>sgb` |

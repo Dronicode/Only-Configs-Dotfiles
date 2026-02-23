@@ -57,15 +57,12 @@ This is especially useful when you don't remember the exact key combination—ju
 
 ## Terminal (Toggleterm)
 
-| Shortcut     | Action                          | Defined In               |
-| ------------ | ------------------------------- | ------------------------ |
+| `<leader>tt` | Open horizontal terminal        | `plugins/toggleterm.lua` |
+| `<leader>tf` | Open floating terminal          | `plugins/toggleterm.lua` |
+| `<leader>tl` | Open Lazygit (ToggleTerm)       | `plugins/toggleterm.lua` |
+| `<leader>th` | Open Htop (ToggleTerm)          | `plugins/toggleterm.lua` |
 | `Ctrl+\`     | Toggle terminal                 | `plugins/toggleterm.lua` |
 | `Esc`        | Exit terminal mode to normal    | `plugins/toggleterm.lua` |
-
-**Workflow:**
-
-- `<leader>tt` - Open horizontal terminal
-- `<leader>tf` - Open floating terminal
 - `Esc` - Exit insert mode and return to normal mode
 - `<C-h/j/k/l>` - Navigate between panes (in normal mode)
 - Type normally in terminal insert mode
@@ -99,6 +96,10 @@ This is especially useful when you don't remember the exact key combination—ju
 | `<leader>sgh` | Search git history (commits for file) | `plugins/telescope.lua` |
 | `<leader>sgb` | Search git branches                   | `plugins/telescope.lua` |
 | `<leader>sgs` | Search git status (diff view)         | `plugins/telescope.lua` |
+| `<leader>gg`  | Open Lazygit                          | `plugins/lazygit.lua`   |
+| `<leader>gf`  | Open Lazygit focused on current file  | `plugins/lazygit.lua`   |
+
+**Prerequisite:** Install the `lazygit` binary on your system (`lazygit --version` should work).
 
 ### Content Search
 
@@ -108,6 +109,7 @@ This is especially useful when you don't remember the exact key combination—ju
 | `<leader>sw`  | Search current word under cursor | `plugins/telescope.lua` |
 | `<leader>s/`  | Live grep in open files          | `plugins/telescope.lua` |
 | `<leader>/`   | Fuzzy search in current buffer   | `plugins/telescope.lua` |
+| `<leader>st`  | Toggle hidden files              | `plugins/telescope.lua` |
 
 ### LSP & Diagnostics
 
@@ -190,6 +192,26 @@ Side-by-side file diffs with full project context. Complements Gitsigns for comp
 - `<Tab>` - Cycle through files
 - `/` - Search in diff
 - `dd` - Toggle diff stat
+
+---
+
+## Lazygit (Terminal Git UI)
+
+Fast interactive Git UI inside Neovim for staging files/hunks, committing, rebasing, and pushing.
+
+| Shortcut     | Action                              | Defined In            |
+| ------------ | ----------------------------------- | --------------------- |
+| `<leader>gg` | Open Lazygit for current repository | `plugins/lazygit.lua` |
+| `<leader>gf` | Open Lazygit for current file focus | `plugins/lazygit.lua` |
+
+**Typical commit workflow (partial staging):**
+
+1. Press `<leader>gg` to open Lazygit
+2. In Files panel, select files and stage (`space`) or stage hunks/lines (`s`/`v` modes inside Lazygit)
+3. Press `c` to commit and write your message
+4. Push with `P` when ready
+
+Use `?` in Lazygit to view all built-in keybindings.
 
 ---
 

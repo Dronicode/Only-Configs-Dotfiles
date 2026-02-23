@@ -148,9 +148,9 @@ return {
     end, { desc = '[/] Fuzzily search in current buffer' })
 
     -- Toggle hidden files visibility in telescope
-    vim.keymap.set('n', '<leader>th', function()
+    vim.keymap.set('n', '<leader>st', function()
       show_hidden = not show_hidden
       vim.notify('Show hidden files: ' .. (show_hidden and 'ON (visible)' or 'OFF (hidden)'))
-    end, { desc = '[T]elescope toggle [H]idden files' })
+    end, { desc = '[S]earch toggle [T]idden files' })
   end,
 }

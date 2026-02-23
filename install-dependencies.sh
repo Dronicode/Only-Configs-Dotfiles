@@ -13,7 +13,7 @@ fi
 
 install_arch() {
     echo "Detected Arch Linux - using pacman"
-    sudo pacman -S --needed --noconfirm eza fzf zsh neovim tmux git npm
+    sudo pacman -S --needed --noconfirm eza fzf zsh neovim tmux git npm lazygit htop
     
     # Install yay if not present (needed for AUR packages)
     if ! command -v yay &> /dev/null; then
@@ -36,7 +36,15 @@ install_arch() {
 install_debian() {
     echo "Detected Debian/Ubuntu - using apt"
     sudo apt update
-    sudo apt install -y zsh fzf autojump tmux git curl npm nodejs build-essential
+    sudo apt install -y zsh fzf autojump tmux git curl npm nodejs build-essential htop
+
+    # Install lazygit if available in apt repositories
+    if ! command -v lazygit &> /dev/null; then
+        echo "Installing lazygit..."
+        if ! sudo apt install -y lazygit; then
+            echo "⚠️  Could not install lazygit via apt. Install manually from: https://github.com/jesseduffield/lazygit"
+        fi
+    fi
     
     # Install newer Neovim (Debian/Ubuntu repos have old versions)
     echo "Checking Neovim version..."
@@ -109,6 +117,8 @@ case "$OS" in
         echo "  - neovim"
         echo "  - tmux"
         echo "  - git"
+        echo "  - lazygit"
+        echo "  - htop"
         exit 1
         ;;
 esac
