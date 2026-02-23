@@ -57,16 +57,25 @@ This is especially useful when you don't remember the exact key combination—ju
 
 ## Terminal (Toggleterm)
 
-| Shortcut | Action          | Defined In               |
-| -------- | --------------- | ------------------------ |
-| `Ctrl+\` | Toggle terminal | `plugins/toggleterm.lua` |
+| Shortcut     | Action                          | Defined In               |
+| ------------ | ------------------------------- | ------------------------ |
+| `Ctrl+\`     | Toggle terminal                 | `plugins/toggleterm.lua` |
+| `Esc`        | Exit terminal mode to normal    | `plugins/toggleterm.lua` |
+
+**Workflow:**
+
+- `<leader>tt` - Open horizontal terminal
+- `<leader>tf` - Open floating terminal
+- `Esc` - Exit insert mode and return to normal mode
+- `<C-h/j/k/l>` - Navigate between panes (in normal mode)
+- Type normally in terminal insert mode
 
 **Features:**
 
 - Embedded terminal inside nvim (alternative to tmux splits)
 - Persists when you switch buffers
 - Auto-closes when exiting shell
-- Use `Escape` to exit terminal mode and return to normal vim mode
+- Escape to normal mode, then use vim navigation
 
 ---
 
@@ -83,8 +92,8 @@ This is especially useful when you don't remember the exact key combination—ju
 
 ### Git Integration
 
-| Shortcut     | Action                                | Defined In              |
-| ------------ | ------------------------------------- | ----------------------- |
+| Shortcut      | Action                                | Defined In              |
+| ------------- | ------------------------------------- | ----------------------- |
 | `<leader>sgf` | Search git files                      | `plugins/telescope.lua` |
 | `<leader>sgc` | Search git commits                    | `plugins/telescope.lua` |
 | `<leader>sgh` | Search git history (commits for file) | `plugins/telescope.lua` |
@@ -93,12 +102,12 @@ This is especially useful when you don't remember the exact key combination—ju
 
 ### Content Search
 
-| Shortcut     | Action                           | Defined In              |
-| ------------ | -------------------------------- | ----------------------- |
+| Shortcut      | Action                           | Defined In              |
+| ------------- | -------------------------------- | ----------------------- |
 | `<leader>sgr` | Live grep (search text in files) | `plugins/telescope.lua` |
-| `<leader>sw` | Search current word under cursor | `plugins/telescope.lua` |
-| `<leader>s/` | Live grep in open files          | `plugins/telescope.lua` |
-| `<leader>/`  | Fuzzy search in current buffer   | `plugins/telescope.lua` |
+| `<leader>sw`  | Search current word under cursor | `plugins/telescope.lua` |
+| `<leader>s/`  | Live grep in open files          | `plugins/telescope.lua` |
+| `<leader>/`   | Fuzzy search in current buffer   | `plugins/telescope.lua` |
 
 ### LSP & Diagnostics
 
@@ -297,12 +306,12 @@ Graphical undo/redo browser. See all your edits as a tree with branches so you n
 
 ### Diagnostics Navigation
 
-| Shortcut    | Action                           | Defined In         |
-| ----------- | -------------------------------- | ------------------ |
-| `[d`        | Go to previous diagnostic        | `core/keymaps.lua` |
-| `]d`        | Go to next diagnostic            | `core/keymaps.lua` |
-| `<leader>d` | Open floating diagnostic message | `core/keymaps.lua` |
-| `<leader>q` | Open diagnostics list            | `core/keymaps.lua` |
+| Shortcut     | Action                           | Defined In         |
+| ------------ | -------------------------------- | ------------------ |
+| `[d`         | Go to previous diagnostic        | `core/keymaps.lua` |
+| `]d`         | Go to next diagnostic            | `core/keymaps.lua` |
+| `<leader>dd` | Open floating diagnostic message | `core/keymaps.lua` |
+| `<leader>dq` | Open diagnostics list            | `core/keymaps.lua` |
 
 ### Trouble.nvim - Diagnostics Viewer
 

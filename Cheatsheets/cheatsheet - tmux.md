@@ -272,17 +272,20 @@ The `tmux-sidebar` plugin provides a directory tree:
 
 ## Quick Popups
 
-Open temporary overlay windows for quick tasks without disrupting your layout:
+Open temporary overlay windows for quick tasks without disrupting your layout. Press `Prefix f` then the second key:
 
-| Shortcut        | Action                           | Type     |
-| --------------- | -------------------------------- | -------- |
-| `Prefix Ctrl-g` | Open quick terminal popup (80%)  | Custom   |
-| `Prefix g`      | Open git status popup (80%)      | Custom   |
+| Shortcut   | Action                           | Working Dir      |
+| ---------- | -------------------------------- | ---------------- |
+| `Prefix f g` | Open git status popup (80%)      | Current pane dir |
+| `Prefix f c` | Open terminal popup (80%)        | Current pane dir |
+| `Prefix f h` | Open terminal popup (80%)        | Home directory   |
 
 **Features:**
 - Popups appear as overlays over your current layout
 - Close with `exit` or `Ctrl-d` to return to normal view
-- Uses current directory as working directory
+- `fg` - Perfect for quick git status checks
+- `fc` - Terminal in current project directory
+- `fh` - Terminal starting from home (good for system tasks)
 - Useful for quick commands without disrupting split layout
 
 ---
