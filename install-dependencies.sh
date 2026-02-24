@@ -30,7 +30,7 @@ install_arch() {
     
     # Install autojump from AUR
     echo "Installing autojump from AUR..."
-    yay -S --needed --noconfirm autojump
+    yay -S --noconfirm autojump
 }
 
 install_debian() {

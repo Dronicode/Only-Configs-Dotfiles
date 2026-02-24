@@ -1,10 +1,6 @@
 return {
 	'folke/which-key.nvim',
-	event = 'BufReadPost', -- Load earlier to avoid interference
-	init = function()
-		vim.o.timeout = true
-		vim.o.timeoutlen = 300
-	end,
+	event = 'VeryLazy',
 	opts = {
 		spec = {
 			{ '<leader>g', group = '[G]it' },
@@ -18,6 +14,8 @@ return {
 		},
 		win = {
 			border = 'rounded',
+			title = ' Darn, I forgot that shortcut again... ',
+			title_pos = 'center',
 			padding = { 1, 2, 1, 2 },
 		},
 	},

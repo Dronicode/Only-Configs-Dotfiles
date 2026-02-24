@@ -9,20 +9,8 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-        style = "night",
-        transparent = false,
-        terminal_colors = true,
-        on_highlights = function(hl, c)
-            hl.FloatBorder = { fg = c.purple }
-            hl.LazyGitBorder = { fg = c.purple }
-            hl.TelescopeBorder = { fg = c.purple }
-            hl.TelescopePromptBorder = { fg = c.purple }
-            hl.NeoTreeFloatBorder = { fg = c.purple }
-        end,
-    },
-    config = function(_, opts)
-        require('tokyonight').setup(opts)
+    opts = {},
+    config = function()
         require('tokyonight').load()
     end
 }

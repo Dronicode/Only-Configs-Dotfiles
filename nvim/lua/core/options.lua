@@ -8,6 +8,8 @@ vim.o.fileencoding = 'utf-8' -- The encoding written to a file (default: 'utf-8'
 --vim.o.cmdheight = 1 -- More space in the Neovim command line for displaying messages (default: 1)
 vim.o.undofile = true -- Save undo history (default: false)
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience (default: 'menu,preview')
+vim.o.timeout = true -- Required for multi-key mappings like <leader> sequences
+vim.o.timeoutlen = 700 -- Gives enough time to complete leader-key combos reliably
 
 -- --- Status Bar ---
 vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore (default: true)
@@ -42,6 +44,7 @@ vim.o.sidescrolloff = 8 -- Minimal number of screen columns either side of curso
 -- --- Window ---
 vim.o.splitbelow = true -- Force all horizontal splits to go below current window (default: false)
 vim.o.splitright = true -- Force all vertical splits to go to the right of current window (default: false)
+vim.o.winborder = 'rounded' -- Global border style for floating windows/dialogs
 
 -- --- Search ---
 vim.o.hlsearch = false -- Set highlight on search (default: true)
@@ -82,14 +85,33 @@ vim.diagnostic.config({
 	signs = false,
 	float = {
 		source = "always",
-		border = "rounded",
 		severity = { min = vim.diagnostic.severity.HINT },
+		header = "",
 	},
 })
+
+local float_border_purple = '#bb9af7'
+local float_title_cyan = '#7dcfff'
+
+vim.api.nvim_set_hl(0, 'FloatBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'FloatTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'TelescopeTitle', { fg = float_title_cyan, bg = 'none', bold = true })
 
 -- Enable undercurl (curly underline) for diagnostics and set spine colors
 vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = function()
+		vim.api.nvim_set_hl(0, 'FloatBorder', { fg = float_border_purple })
+		vim.api.nvim_set_hl(0, 'FloatTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+		vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'TelescopeTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+
 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#ff4d6d" })
 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#d19a66" })
 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#61afef" })
