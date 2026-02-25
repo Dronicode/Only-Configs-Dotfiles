@@ -1,53 +1,46 @@
-# WezTerm Cheatsheet
+# WezTerm
 
-## Pane Navigation & Management
-| Action | Keybinding |
-|--------|-----------|
-| Move to left pane | `Alt+Shift+h` |
-| Move to down pane | `Alt+Shift+j` |
-| Move to up pane | `Alt+Shift+k` |
-| Move to right pane | `Alt+Shift+l` |
-| Split right (vertical divider) | `Alt+Shift+>` |
-| Split down (horizontal divider) | `Alt+Shift+<` |
-| Zoom/unzoom current pane | `Alt+Shift+z` |
-| Close current pane | `Alt+Shift+q` |
-| Resize active pane | `Alt+Shift+Arrow` (adjust by 5 cells) |
+Modifiers: Alt+Shift for panes/tabs · Alt for tab cycling · Ctrl+Shift for copy/search · Mouse selection copies to clipboard and primary.
 
-## Tab Management
-| Action | Keybinding |
-|--------|-----------|
-| New tab | `Alt+Shift+c` |
-| Close tab | `Alt+Shift+x` |
-| Next tab | `Alt+n` |
-| Previous tab | `Alt+p` |
-| Rename tab | `Alt+Shift+,` |
+## Panes
 
-## Copy & Paste
-| Action | Keybinding |
-|--------|-----------|
-| Copy selection | `Ctrl+Shift+c` |
-| Paste from clipboard | `Ctrl+Shift+v` |
-| Copy on mouse selection | (automatic - just select) |
-| Paste on middle mouse click | (automatic) |
+| Action                              | Keybinding              | Notes                      |
+| ----------------------------------- | ----------------------- | -------------------------- |
+| Focus pane left / down / up / right | Alt+Shift+h / j / k / l | Matches Neovim hjkl motion |
+| Split right (vertical divider)      | Alt+Shift+>             | New pane on the right      |
+| Split down (horizontal divider)     | Alt+Shift+<             | New pane below             |
+| Resize pane                         | Alt+Shift+Arrow         | Adjusts by 5 cells         |
+| Zoom/unzoom pane                    | Alt+Shift+z             | Toggle max pane            |
+| Close pane                          | Alt+Shift+q             | Prompts to confirm         |
 
-## Built-in Tools & Features
-| Action | Keybinding |
-|--------|-----------|
-| Quick select (URLs, paths, hashes) | `Ctrl+Shift+Space` |
-| Search scrollback | `Ctrl+Shift+f` |
-| Command palette | `Ctrl+Shift+p` |
-| Debug overlay (logs) | `Ctrl+Shift+l` |
+## Tabs
 
-## Font Control
-| Action | Keybinding |
-|--------|-----------|
-| Increase font size | `Ctrl+=` |
-| Decrease font size | `Ctrl+-` |
-| Reset font size | `Ctrl+0` |
+| Action              | Keybinding    | Notes             |
+| ------------------- | ------------- | ----------------- |
+| New tab             | Alt+Shift+c   |                   |
+| Close tab           | Alt+Shift+x   | Confirmed close   |
+| Next / Previous tab | Alt+n / Alt+p |                   |
+| Rename tab          | Alt+Shift+,   | Prompts for title |
+
+## Copy, Paste, and Search
+
+| Action                             | Keybinding                 | Notes                                         |
+| ---------------------------------- | -------------------------- | --------------------------------------------- |
+| Copy selection                     | Ctrl+Shift+c               | Copies to clipboard and primary               |
+| Paste from clipboard               | Ctrl+Shift+v               |                                               |
+| Quick select (URLs, paths, hashes) | Ctrl+Shift+Space           | Selects and copies match                      |
+| Search scrollback                  | Ctrl+Shift+f               | Uses current selection or empty query         |
+| Mouse copy / paste                 | Select text / Middle click | Selection copies; middle click pastes primary |
+
+## Font Size
+
+| Action   | Keybinding |
+| -------- | ---------- |
+| Increase | Ctrl+=     |
+| Decrease | Ctrl+-     |
+| Reset    | Ctrl+0     |
 
 ## Notes
-- **Leader key not used** - All bindings are direct (no prefix key like tmux)
-- **Alt+Shift is the modifier** for pane/tab operations (matches most cross-platform tools)
-- **Alt alone** is for tab navigation (next/prev)
-- **Ctrl+Shift** is for copy/paste/search/debug functions
-- **Mouse selection copies automatically** to both clipboard and primary selection (tmux-compatible)
+
+- No leader key, just modifiers; all bindings are direct to match tmux/Neovim directions.
+- Status line shows a custom workspace name when set; hidden when using the default workspace.

@@ -1,10 +1,28 @@
-# Vim Concepts: The Vim Way of Thinking
+# Neovim
+
+Leader key: Space. Use which-key: press `<leader>`, wait ~300ms, then follow the prompts to discover bindings.
+
+## Sections
+
+- [Autocompletion & AI](neovim/autocomplete-ai.md)
+- [Bookmarks & Undo](neovim/bookmarks-undo.md)
+- [Configuration Details & Notes](neovim/config-details.md)
+- [Core Commands & Modes](neovim/core-commands.md)
+- [Editing, Comments, Text Objects](neovim/editing-textobjects.md)
+- [Files & Search](neovim/files-search.md)
+- [Git](neovim/git.md)
+- [LSP & Diagnostics](neovim/lsp-diagnostics.md)
+- [Motions & Operators](neovim/motions-operators.md)
+- [Navigation & Movement](neovim/navigation.md)
+- [Terminal](neovim/terminal.md)
+- [Visual Mode, Clipboard, Misc](neovim/visual-misc.md)
+- [Windows, Buffers, Tabs](neovim/windows-buffers-tabs.md)
+
+## Vim Concepts: The Vim Way of Thinking
 
 This guide explains fundamental Vim/Neovim concepts to help you understand how to work efficiently with the editor.
 
----
-
-## Core Philosophy
+### Core Philosophy
 
 Vim is built around a few key principles:
 
@@ -15,13 +33,11 @@ Vim is built around a few key principles:
 
 The Vim way is to stay in Normal mode as much as possible, making quick edits and navigating efficiently.
 
----
-
-## Buffers, Windows, and Tabs
+### Buffers, Windows, and Tabs
 
 Understanding these three concepts is crucial to using Vim effectively.
 
-### Buffers
+#### Buffers
 
 **What is a buffer?**
 
@@ -40,18 +56,18 @@ Understanding these three concepts is crucial to using Vim effectively.
 
 **Managing buffers:**
 
-```
-:e filename         Open file in current window
-:badd filename      Add file to buffer list without opening
-:ls or :buffers     List all buffers
-:b <number>         Switch to buffer by number
-:b <name>           Switch to buffer by name (tab completion works!)
-:bnext or :bn       Next buffer
-:bprev or :bp       Previous buffer
-:bdelete or :bd     Delete buffer (close file)
-:bdelete!           Force delete (discard unsaved changes)
-:%bd                Delete all buffers
-```
+| Command            | Description                                     |
+| ------------------ | ----------------------------------------------- |
+| `:e {filename}`    | Open file in current window                     |
+| `:badd {filename}` | Add file to buffer list without opening         |
+| `:ls` / `:buffers` | List all buffers                                |
+| `:b {number}`      | Switch to buffer by number                      |
+| `:b {name}`        | Switch to buffer by name (tab completion works) |
+| `:bnext` / `:bn`   | Next buffer                                     |
+| `:bprev` / `:bp`   | Previous buffer                                 |
+| `:bdelete` / `:bd` | Delete buffer (close file)                      |
+| `:bdelete!`        | Force delete (discard unsaved changes)          |
+| `:%bd`             | Delete all buffers                              |
 
 **Your custom shortcuts:**
 
@@ -78,17 +94,13 @@ Understanding these three concepts is crucial to using Vim effectively.
 
 **Typical workflow:**
 
-```
-1. Open your project root in Neovim
-2. Use <leader>sf to find and open files (adds to buffers)
-3. Use <Tab>/<S-Tab> to cycle through open files
-4. Use <leader>x to close files you're done with
-5. Your buffer list grows and shrinks as you work
-```
+1. Open your project root in Neovim.
+2. Use `<leader>sf` to find and open files (adds to buffers).
+3. Use `<Tab>/<S-Tab>` to cycle through open files.
+4. Use `<leader>x` to close files you're done with.
+5. Your buffer list grows and shrinks as you work.
 
----
-
-### Windows (Splits/Panes)
+#### Windows (Splits/Panes)
 
 **What is a window?**
 
@@ -114,30 +126,28 @@ Understanding these three concepts is crucial to using Vim effectively.
 
 **Managing windows:**
 
-```
-:split or :sp       Horizontal split (same file)
-:vsplit or :vsp     Vertical split (same file)
-:split filename     Horizontal split with different file
-:vsplit filename    Vertical split with different file
-:new                New horizontal split with empty buffer
-:vnew               New vertical split with empty buffer
-:only               Close all windows except current
-:close              Close current window
-:q                  Quit (close) current window
-
-Ctrl-w s            Horizontal split
-Ctrl-w v            Vertical split
-Ctrl-w q            Close current window
-Ctrl-w o            Close all but current window
-Ctrl-w w            Cycle to next window
-Ctrl-w hjkl         Navigate between windows
-Ctrl-w HJKL         Move window to far left/down/up/right
-Ctrl-w =            Make all windows equal size
-Ctrl-w _            Maximize height
-Ctrl-w |            Maximize width
-Ctrl-w +/-          Increase/decrease height
-Ctrl-w >/<          Increase/decrease width
-```
+| Command / Mapping  | Description                            |
+| ------------------ | -------------------------------------- |
+| `:split` / `:sp`   | Horizontal split (same file)           |
+| `:vsplit` / `:vsp` | Vertical split (same file)             |
+| `:split {file}`    | Horizontal split with different file   |
+| `:vsplit {file}`   | Vertical split with different file     |
+| `:new`             | New horizontal split with empty buffer |
+| `:vnew`            | New vertical split with empty buffer   |
+| `:only`            | Close all windows except current       |
+| `:close` / `:q`    | Close current window                   |
+| `Ctrl-w s`         | Horizontal split                       |
+| `Ctrl-w v`         | Vertical split                         |
+| `Ctrl-w q`         | Close current window                   |
+| `Ctrl-w o`         | Close all but current window           |
+| `Ctrl-w w`         | Cycle to next window                   |
+| `Ctrl-w hjkl`      | Navigate between windows               |
+| `Ctrl-w HJKL`      | Move window to far left/down/up/right  |
+| `Ctrl-w =`         | Make all windows equal size            |
+| `Ctrl-w _`         | Maximize height                        |
+| `Ctrl-w \|`        | Maximize width                         |
+| `Ctrl-w +/-`       | Increase/decrease height               |
+| `Ctrl-w >/<`       | Increase/decrease width                |
 
 **Your custom shortcuts:**
 
@@ -150,13 +160,11 @@ Ctrl-w >/<          Increase/decrease width
 
 **Typical workflow:**
 
-```
-1. Start with one window
-2. Open a related file: <leader>v then <leader>sf (find file)
-3. Navigate with <C-h/j/k/l>
-4. When done comparing, use :q or <leader>xs to close split
-5. Back to single window with your main file
-```
+1. Start with one window.
+2. Open a related file: `<leader>v` then `<leader>sf` (find file).
+3. Navigate with `<C-h/j/k/l>`.
+4. When done comparing, use `:q` or `<leader>xs` to close the split.
+5. Back to a single window with your main file.
 
 **Common patterns:**
 
@@ -165,9 +173,7 @@ Ctrl-w >/<          Increase/decrease width
 - **Horizontal + vertical:** Code on top, terminal on bottom
 - **Reference layout:** Small split with docs, large split for coding
 
----
-
-### Tabs
+#### Tabs
 
 **What is a tab?**
 
@@ -188,20 +194,19 @@ Ctrl-w >/<          Increase/decrease width
 
 **Managing tabs:**
 
-```
-:tabnew             Open new tab with empty buffer
-:tabnew filename    Open new tab with file
-:tabe filename      Edit file in new tab
-:tabclose or :tabc  Close current tab
-:tabonly            Close all tabs except current
-:tabnext or :tabn   Next tab
-:tabprev or :tabp   Previous tab
-:tabfirst           First tab
-:tablast            Last tab
-:tabs               List all tabs
-:tabmove 0          Move tab to first position
-:tabmove            Move tab to last position
-```
+| Command                  | Description                    |
+| ------------------------ | ------------------------------ |
+| `:tabnew`                | Open new tab with empty buffer |
+| `:tabnew {file}`         | Open new tab with file         |
+| `:tabe {file}`           | Edit file in new tab           |
+| `:tabclose` / `:tabc`    | Close current tab              |
+| `:tabonly`               | Close all tabs except current  |
+| `:tabnext` / `:tabn`     | Next tab                       |
+| `:tabprev` / `:tabp`     | Previous tab                   |
+| `:tabfirst` / `:tablast` | First / last tab               |
+| `:tabs`                  | List all tabs                  |
+| `:tabmove 0`             | Move tab to first position     |
+| `:tabmove`               | Move tab to last position      |
 
 **Your custom shortcuts:**
 
@@ -212,21 +217,17 @@ Ctrl-w >/<          Increase/decrease width
 
 **Typical workflow (if using tabs):**
 
-```
-1. Start with one tab for main feature
-2. <leader>to for a new context (e.g., documentation)
-3. Set up splits in each tab as needed
-4. <leader>tn/tp to switch between contexts
-5. <leader>tx when done with a context
-```
+1. Start with one tab for the main feature.
+2. Use `<leader>to` for a new context (e.g., documentation).
+3. Set up splits in each tab as needed.
+4. Use `<leader>tn/tp` to switch between contexts.
+5. Use `<leader>tx` when done with a context.
 
 **Important note:** Most experienced Vim users use tabs sparingly or not at all. Buffers + windows are usually sufficient and more flexible.
 
----
+### Closing Things: A Decision Tree
 
-## Closing Things: A Decision Tree
-
-### "I want to close this file"
+#### "I want to close this file"
 
 **Use:** `<leader>x` or `:bd`
 
@@ -234,7 +235,7 @@ Ctrl-w >/<          Increase/decrease width
 - Window stays open (might show another buffer or be empty)
 - Other windows remain unchanged
 
-### "I want to close this split/pane"
+#### "I want to close this split/pane"
 
 **Use:** `:q` or `<leader>xs` (for `:close`)
 
@@ -242,28 +243,28 @@ Ctrl-w >/<          Increase/decrease width
 - Buffer remains in memory (can open in another window)
 - Other windows remain
 
-### "I want to close this file AND the split"
+#### "I want to close this file AND the split"
 
 **Use:** `:q`
 
 - First use `<leader>x` to close buffer, then `:q` to close window
 - Or just `:q` if you don't care about the buffer
 
-### "I want to close everything in this tab"
+#### "I want to close everything in this tab"
 
 **Use:** `:only` then `<leader>x` for each buffer
 
 - `:only` closes all windows except current
 - Then clean up buffers as needed
 
-### "I want to close this tab"
+#### "I want to close this tab"
 
 **Use:** `<leader>tx` or `:tabclose`
 
 - Closes the entire tab and its window layout
 - Buffers remain in memory
 
-### "I want to exit Neovim"
+#### "I want to exit Neovim"
 
 **Use:** `:qa` (quit all)
 
@@ -271,22 +272,18 @@ Ctrl-w >/<          Increase/decrease width
 - `:qa!` - Force quit all (discard changes)
 - `:wqa` - Write all and quit all
 
----
+### Recommended Workflows
 
-## Recommended Workflows
-
-### Workflow 1: Buffer-Centric (Most Common)
+#### Workflow 1: Buffer-Centric (Most Common)
 
 **Best for:** Most development work, single project
 
-```
-1. Open Neovim in project root
-2. Use <leader>sf to open files (creates buffers)
-3. Use <Tab>/<S-Tab> to switch between files
-4. Occasionally use <leader>v to split for comparison
-5. Close splits with :q when done comparing
-6. Close unneeded buffers with <leader>x
-```
+1. Open Neovim in the project root.
+2. Use `<leader>sf` to open files (creates buffers).
+3. Use `<Tab>/<S-Tab>` to switch between files.
+4. Occasionally use `<leader>v` to split for comparison.
+5. Close splits with `:q` when done comparing.
+6. Close unneeded buffers with `<leader>x`.
 
 **Advantages:**
 
@@ -295,22 +292,18 @@ Ctrl-w >/<          Increase/decrease width
 - Fast file switching
 - Works great with fuzzy finder (Telescope)
 
-**Your buffer list is your "working set"**
+Your buffer list is your "working set"
 
----
-
-### Workflow 2: Window-Centric
+#### Workflow 2: Window-Centric
 
 **Best for:** Working with related files simultaneously
 
-```
-1. Open main file
-2. <leader>v to create vertical split
-3. <leader>sf to open related file in split
-4. Use <C-h/l> to move between splits
-5. Both files visible at all times
-6. Use :q to close splits when done
-```
+1. Open the main file.
+2. Use `<leader>v` to create a vertical split.
+3. Use `<leader>sf` to open a related file in the split.
+4. Use `<C-h/l>` to move between splits.
+5. Keep both files visible while working.
+6. Use `:q` to close splits when done.
 
 **Advantages:**
 
@@ -324,18 +317,14 @@ Ctrl-w >/<          Increase/decrease width
 - Three column layout (rare but useful)
 - Code + terminal horizontal split
 
----
-
-### Workflow 3: Tab-Based (Advanced/Optional)
+#### Workflow 3: Tab-Based (Advanced/Optional)
 
 **Best for:** Multiple contexts or complex layouts
 
-```
-1. Tab 1: Feature A (3-way split with related files)
-2. Tab 2: Feature B (2-way split)
-3. Tab 3: Documentation (1 window)
-4. Switch between contexts with <leader>tn/tp
-```
+1. Tab 1: Feature A (3-way split with related files).
+2. Tab 2: Feature B (2-way split).
+3. Tab 3: Documentation (1 window).
+4. Switch between contexts with `<leader>tn/tp`.
 
 **Advantages:**
 
@@ -349,9 +338,7 @@ Ctrl-w >/<          Increase/decrease width
 - Easy to lose track
 - Most people don't need this
 
----
-
-## Mental Model Summary
+### Mental Model Summary
 
 Think of it this way:
 
@@ -367,61 +354,49 @@ Think of it this way:
 - **Windows** are like having multiple monitors (showing different documents)
 - **Tabs** are like different desks (each with its own monitor setup)
 
----
-
-## Common Confusions Clarified
-
-### "Why does my file disappear when I close it?"
+#### "Why does my file disappear when I close it?"
 
 You closed the **window** (`:q`) not the **buffer** (`<leader>x`). The file is still in memory, open it again with `:b <filename>` or `<Tab>` through buffers.
 
-### "Why can't I switch to my file with <Tab>?"
+#### "Why can't I switch to my file with `<Tab>`?"
 
 It's not in the **buffer list**. Open it with `<leader>sf` or `:e filename` first.
 
-### "Why do I have the same file open twice?"
+#### "Why do I have the same file open twice?"
 
 You opened the same **buffer** in two **windows** (splits). This is intentional - useful for viewing different parts of a large file.
 
-### "Should I use tabs?"
+#### "Should I use tabs?"
 
 Probably not at first. Master buffers and windows first. Tabs are for advanced workflows with multiple contexts.
 
----
-
-## Best Practices
+### Best Practices
 
 1. **Use buffers for file switching** - This is the Vim way
-
    - Keep your frequently-used files in the buffer list
    - Use `<Tab>`/`<S-Tab>` or Telescope to switch
 
 2. **Use windows for simultaneous viewing** - When you need to see multiple things
-
    - Split when comparing or referencing
    - Close splits when done to reduce clutter
 
 3. **Use tabs sparingly** - Only for truly separate contexts
-
    - Different features
    - Different projects
    - Complex layouts worth preserving
 
 4. **Close things appropriately:**
-
    - Done with file? `<leader>x` (close buffer)
    - Done with split? `:q` (close window)
    - Done with context? `<leader>tx` (close tab)
    - Done with session? `:qa` (quit all)
 
 5. **Don't let buffers accumulate**
-
    - Close buffers you're done with using `<leader>x`
    - Use `<leader>sb` to see what's open
    - Periodically clean up with `:ls` to review
 
 6. **Keep your layout simple**
-
    - One or two splits is usually enough
    - Too many splits = cognitive overload
    - If you need more, consider tabs
@@ -432,9 +407,7 @@ Probably not at first. Master buffers and windows first. Tabs are for advanced w
    - Think of it as a permanent sidebar
    - Close other windows around it, not it directly
 
----
-
-## Quick Reference
+### Quick Reference
 
 | Want to...       | Command       | Your Shortcut       |
 | ---------------- | ------------- | ------------------- |
@@ -458,37 +431,33 @@ Probably not at first. Master buffers and windows first. Tabs are for advanced w
 | Quit and save    | `:wqa`        | -                   |
 | Force quit       | `:qa!`        | -                   |
 
----
+### Learning Path
 
-## Learning Path
-
-**Week 1: Master Buffers**
+#### Week 1: Master Buffers
 
 - Use only `<Tab>`/`<S-Tab>` and `<leader>sf`
 - Get comfortable with buffer-based workflow
 - Don't use splits or tabs yet
 
-**Week 2: Add Splits**
+#### Week 2: Add Splits
 
 - Start using `<leader>v` when you need side-by-side
 - Practice `<C-hjkl>` navigation
 - Get comfortable closing splits with `:q`
 
-**Week 3: Refine Your Workflow**
+#### Week 3: Refine Your Workflow
 
 - Use `<leader>e` for file tree when needed
 - Master closing the right thing at the right time
 - Keep your buffer list clean
 
-**Week 4+: Advanced (Optional)**
+#### Week 4+: Advanced (Optional)
 
 - Experiment with tabs if you have multiple contexts
 - Learn complex window manipulation
 - Develop your personal workflow preferences
 
----
-
-## Remember
+### Remember
 
 - **Buffers are your friends** - Use them for everything
 - **Windows are temporary** - Create and destroy as needed

@@ -1,6 +1,13 @@
-# Combined Navigation Cheatsheet — Action-first, tables
+# Navigation
 
 Use this as a quick reference: each row is an action, columns are `WezTerm · Tmux · Neovim`.
+
+Detailed per-tool tables:
+
+- [Wezterm](wezterm.md)
+- [Tmux](tmux.md)
+- [Neovim](neovim.md)
+- [Zsh](zsh.md)
 
 ## leader / prefix keys
 
