@@ -4,15 +4,21 @@ icon: lucide/rocket
 
 # Documentation Map
 
+Editors & shells
+
+- [Neovim](Editors/neovim.md)
+- [Tmux](Shells/tmux.md)
+- [Wezterm](Shells/wezterm.md)
+- [Zsh](Shells/zsh.md)
+
+Tools
+
+- [Lazygit](Tools/lazygit.md)
+- [Htop](Tools/htop.md)
+
+Also useful
+
 - [Navigation](navigation.md)
-- Editors & shells
-  - [Neovim](neovim.md)
-  - [Tmux](tmux.md)
-  - [Wezterm](wezterm.md)
-  - [Zsh](zsh.md)
-- Tools
-  - [Lazygit](lazygit.md)
-  - [Htop](htop.md)
 
 ## Getting Started (clone & deploy)
 

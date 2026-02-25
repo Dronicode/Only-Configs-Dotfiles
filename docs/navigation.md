@@ -4,10 +4,10 @@ Use this as a quick reference: each row is an action, columns are `WezTerm · Tm
 
 Detailed per-tool tables:
 
-- [Wezterm](wezterm.md)
-- [Tmux](tmux.md)
-- [Neovim](neovim.md)
-- [Zsh](zsh.md)
+- [Wezterm](Shells/wezterm.md)
+- [Tmux](Shells/tmux.md)
+- [Neovim](Editors/neovim.md)
+- [Zsh](Shells/zsh.md)
 
 ## leader / prefix keys
 
