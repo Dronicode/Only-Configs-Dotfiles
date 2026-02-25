@@ -39,6 +39,7 @@ safe_link() {
 }
 
 mkdir -p "$HOME/.config/eza"
+mkdir -p "$HOME/.config/lazygit"
 mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
 mkdir -p "$HOME/.config/wezterm"
@@ -46,7 +47,11 @@ mkdir -p "$HOME/.config/zsh/cache/completions"
 
 # Eza - link theme file only
 safe_link "$CONFIGS_DIR/eza/theme.yml" "$HOME/.config/eza/theme.yml"
-echo "✓ Linked eza/theme.yml"
+echo "✓ Linked eza config"
+
+# Lazygit - link config file
+safe_link "$CONFIGS_DIR/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+echo "✓ Linked lazygit config"
 
 # Nvim - link entire directory (nvim creates files elsewhere)
 safe_link "$CONFIGS_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
@@ -55,7 +60,7 @@ echo "✓ Linked nvim config"
 
 # Tmux - link config file only
 safe_link "$CONFIGS_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
-echo "✓ Linked tmux.conf"
+echo "✓ Linked tmux config"
 
 # WezTerm - link config file only
 safe_link "$CONFIGS_DIR/wezterm/.wezterm.lua" "$HOME/.config/wezterm/.wezterm.lua"
@@ -67,7 +72,7 @@ safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.keybinds" "$HOME/.config/zsh/.keybinds"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.p10k.zsh" "$HOME/.config/zsh/.p10k.zsh"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.zshrc" "$HOME/.config/zsh/.zshrc"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/plugins.txt" "$HOME/.config/zsh/plugins.txt"
-echo "✓ Linked zsh config files"
+echo "✓ Linked zsh config"
 
 # Zsh system environment (requires sudo)
 echo "Linking /etc/zsh/zshenv (requires sudo)..."
