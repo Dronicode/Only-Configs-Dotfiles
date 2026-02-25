@@ -2,22 +2,27 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Set directories (project root contains `scripts/` and `configs/`)
+SCRIPTS_DIR="$SCRIPT_DIR/scripts"
+CONFIGS_DIR="$SCRIPT_DIR/configs"
+
+export CONFIGS_DIR
 
 echo "=== Dotfiles Deployment ==="
 echo ""
 
 # Make scripts executable
-chmod +x "$SCRIPT_DIR/install-dependencies.sh"
-chmod +x "$SCRIPT_DIR/make-symlinks.sh"
+chmod +x "$SCRIPTS_DIR/install-dependencies.sh"
+chmod +x "$SCRIPTS_DIR/make-symlinks.sh"
 
 # Run install script
 echo "Step 1: Installing dependencies..."
-bash "$SCRIPT_DIR/install-dependencies.sh"
+bash "$SCRIPTS_DIR/install-dependencies.sh"
 echo ""
 
 # Run symlinks script
 echo "Step 2: Creating symlinks..."
-bash "$SCRIPT_DIR/make-symlinks.sh"
+bash "$SCRIPTS_DIR/make-symlinks.sh" "$CONFIGS_DIR"
 echo ""
 
 echo "Step 3: Doing additional configuration..."
