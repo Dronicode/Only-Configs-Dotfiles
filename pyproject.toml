@@ -1,0 +1,9 @@
+[project]
+name = "only-configs-dotfiles-docs"
+version = "0.0.0"
+description = "Documentation for Only-Configs-Dotfiles"
+readme = "docs/index.md"
+requires-python = ">=3.12"
+dependencies = [
+  "zensical"
+]
