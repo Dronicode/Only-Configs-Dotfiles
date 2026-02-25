@@ -2,17 +2,17 @@
 icon: lucide/rocket
 ---
 
-# Dronico's **O**nly **C**onfigs & **D**ocumentation
+# **O**nly **C**onfigs & **D**ocumentation
 
 Editors
 
-- [Neovim](Editors/neovim.md)
+- [Neovim](Editors/neovim/index.md)
 
 Shells
 
-- [Tmux](Shells/tmux.md)
+- [Tmux](Shells/tmux/index.md)
 - [Wezterm](Shells/wezterm.md)
-- [Zsh](Shells/zsh.md)
+- [Zsh](Shells/zsh/index.md)
 
 Tools
 

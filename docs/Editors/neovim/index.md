@@ -4,19 +4,19 @@ Leader key: Space. Use which-key: press `<leader>`, wait ~300ms, then follow the
 
 ## Sections
 
-- [Autocompletion & AI](neovim/autocomplete-ai.md)
-- [Bookmarks & Undo](neovim/bookmarks-undo.md)
-- [Configuration Details & Notes](neovim/config-details.md)
-- [Core Commands & Modes](neovim/core-commands.md)
-- [Editing, Comments, Text Objects](neovim/editing-textobjects.md)
-- [Files & Search](neovim/files-search.md)
-- [Git](neovim/git.md)
-- [LSP & Diagnostics](neovim/lsp-diagnostics.md)
-- [Motions & Operators](neovim/motions-operators.md)
-- [Navigation & Movement](neovim/navigation.md)
-- [Terminal](neovim/terminal.md)
-- [Visual Mode, Clipboard, Misc](neovim/visual-misc.md)
-- [Windows, Buffers, Tabs](neovim/windows-buffers-tabs.md)
+- [Autocompletion & AI](autocomplete-ai.md)
+- [Bookmarks & Undo](bookmarks-undo.md)
+- [Configuration Details & Notes](config-details.md)
+- [Core Commands & Modes](core-commands.md)
+- [Editing, Comments, Text Objects](editing-textobjects.md)
+- [Files & Search](files-search.md)
+- [Git](git.md)
+- [LSP & Diagnostics](lsp-diagnostics.md)
+- [Motions & Operators](motions-operators.md)
+- [Navigation & Movement](navigation.md)
+- [Terminal](terminal.md)
+- [Visual Mode, Clipboard, Misc](visual-misc.md)
+- [Windows, Buffers, Tabs](windows-buffers-tabs.md)
 
 ## Vim Concepts: The Vim Way of Thinking
 
