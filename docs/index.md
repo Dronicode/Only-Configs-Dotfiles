@@ -2,23 +2,22 @@
 icon: lucide/rocket
 ---
 
-# Documentation Map
+# Dronico's **O**nly **C**onfigs & **D**ocumentation
 
-Editors & shells
+Editors
 
 - [Neovim](Editors/neovim.md)
+
+Shells
+
 - [Tmux](Shells/tmux.md)
 - [Wezterm](Shells/wezterm.md)
 - [Zsh](Shells/zsh.md)
 
 Tools
 
-- [Lazygit](Tools/lazygit.md)
 - [Htop](Tools/htop.md)
-
-Also useful
-
-- [Navigation](navigation.md)
+- [Lazygit](Tools/lazygit.md)
 
 ## Getting Started (clone & deploy)
 
