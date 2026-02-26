@@ -29,6 +29,14 @@ return {
         })
 
         require("neo-tree").setup({
+        default_component_configs = {
+          file_size = {
+            enabled = false,
+          },
+          last_modified = {
+            enabled = false,
+          },
+        },
         source_selector = {
           winbar = false,
           statusline = false,
@@ -36,9 +44,9 @@ return {
         popup_border_style = "rounded",
             filesystem = {
                 filtered_items = {
-                    visible = true,  -- Show hidden files by default
-                    hide_dotfiles = false,
-                    hide_gitignored = false,
+                    visible = false,
+                    hide_dotfiles = true,
+                    hide_gitignored = true,
                 },
             },
             window = {

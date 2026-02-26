@@ -64,7 +64,7 @@ return {
             show_tab_indicators = true,
             show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
             duplicates_across_groups = true, -- whether to consider duplicate paths in different groups as duplicates
-            persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+            persist_buffer_sort = false, -- keep runtime ordering predictable with insert_after_current
             move_wraps_at_ends = false, -- whether or not the move command "wraps" at the first or last position
             -- can also be a table containing 2 custom separators
             -- [focused and unfocused]. eg: { '|', '|' }
@@ -77,7 +77,7 @@ return {
                 delay = 200,
                 reveal = {'close'}
             },
-            sort_by = 'relative_directory', --'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+            sort_by = 'insert_after_current', --'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
                 -- add custom logic
 --                local modified_a = vim.fn.getftime(buffer_a.path)
 --                local modified_b = vim.fn.getftime(buffer_b.path)
