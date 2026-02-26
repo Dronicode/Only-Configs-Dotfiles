@@ -63,7 +63,7 @@ safe_link "$CONFIGS_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 echo "✓ Linked tmux config"
 
 # WezTerm - link config file only
-safe_link "$CONFIGS_DIR/wezterm/.wezterm.lua" "$HOME/.config/wezterm/.wezterm.lua"
+safe_link "$CONFIGS_DIR/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
 echo "✓ Linked wezterm config"
 
 # Zsh - link specific files only (not cache/history)
