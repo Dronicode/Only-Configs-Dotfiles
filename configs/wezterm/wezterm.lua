@@ -170,13 +170,15 @@ end)
 
 -- Tab formatting - show current working directory
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	-- Minimal: prefer shell-set title, fallback to last component of CWD.file_path
-	local shell_title = tab:get_title()
+	-- Minimal: prefer pane title, fallback to last component of CWD.file_path
+	local pane = tab.active_pane
+	local shell_title = pane and pane.title or nil
 	if shell_title and shell_title ~= "" and shell_title ~= "wsl.exe" then
-		return { { Text = shell_title } }
+		local normalized = shell_title:gsub("/$", "")
+		local basename = normalized:match("([^/\\]+)$")
+		return { { Text = basename or shell_title } }
 	end
 
-	local pane = tab.active_pane
 	local cwd = pane and pane.current_working_dir
 	if cwd and cwd.file_path then
 		local path = cwd.file_path:gsub("/$", "")
