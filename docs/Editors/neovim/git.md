@@ -10,12 +10,13 @@
 | `<leader>sgb` | Normal | \[s]earch \[g]it \[b]ranches       | `plugins/telescope.lua` |
 | `<leader>sgs` | Normal | \[s]earch \[g]it \[s]tatus         | `plugins/telescope.lua` |
 
-## Lazygit
+## Lazygit (snacks)
 
-| Shortcut     | Mode   | Action (mnemonic)                          | Defined In            |
-| ------------ | ------ | ------------------------------------------ | --------------------- |
-| `<leader>gg` | Normal | \[g]it GUI lazy\[g]it                      | `plugins/lazygit.lua` |
-| `<leader>gf` | Normal | \[g]it GUI current \[f]ile focus (lazygit) | `plugins/lazygit.lua` |
+| Shortcut     | Mode   | Action (mnemonic)                | Defined In           |
+| ------------ | ------ | -------------------------------- | -------------------- |
+| `<leader>gg` | Normal | \[g]it GUI lazy\[g]it            | `plugins/snacks.lua` |
+| `<leader>gf` | Normal | \[g]it GUI current \[f]ile focus | `plugins/snacks.lua` |
+| `<leader>gl` | Normal | \[g]it repo \[l]og               | `plugins/snacks.lua` |
 
 ## Diffview
 
