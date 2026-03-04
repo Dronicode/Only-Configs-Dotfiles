@@ -21,6 +21,10 @@ return {
   config = function()
     local actions = require 'telescope.actions'
     local builtin = require 'telescope.builtin'
+    local file_ignore_patterns = {
+      'node_modules', '%.git/', '.venv',
+      '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
+    }
 
     -- Toggle state for hidden files
     local show_hidden = true
@@ -36,13 +40,10 @@ return {
             height = { padding = 0 },
           },
         },
-        file_ignore_patterns = {
-          'node_modules', '.git', '.venv',
-          '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
-        },
+        file_ignore_patterns = file_ignore_patterns,
         vimgrep_arguments = {
           'rg',
-          '--color=always',
+          '--color=never',
           '--no-heading',
           '--with-filename',
           '--line-number',
@@ -63,10 +64,7 @@ return {
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = {
-            'node_modules', '.git', '.venv',
-            '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
-          },
+          file_ignore_patterns = file_ignore_patterns,
           hidden = show_hidden,
         },
         buffers = {
@@ -88,10 +86,7 @@ return {
         },
       },
       live_grep = {
-        file_ignore_patterns = {
-          'node_modules', '.git', '.venv',
-          '%.jpg', '%.jpeg', '%.png', '%.svg', '%.otf', '%.ttf', '%.pdf', '%.zip', '%.tar', '%.gz',
-        },
+        file_ignore_patterns = file_ignore_patterns,
         additional_args = function(_)
           return show_hidden and { '--hidden' } or {}
         end,
