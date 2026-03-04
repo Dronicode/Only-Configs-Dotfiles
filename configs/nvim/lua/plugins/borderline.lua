@@ -1,6 +1,7 @@
 return {
   'mikesmithgh/borderline.nvim',
   event = 'VeryLazy',
+  dependencies = { 'ibhagwan/fzf-lua' },
   config = function()
     local purple = '#bb9af7'
     local cyan = '#7dcfff'
