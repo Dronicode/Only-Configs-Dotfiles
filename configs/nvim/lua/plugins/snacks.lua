@@ -33,7 +33,17 @@ return {
       },
     },
     indent = { enabled = true },
-    lazygit = { enabled = true },
+    lazygit = {
+      enabled = true,
+      win = {
+        position = 'float',
+        width = 0.9,
+        height = 0.9,
+        border = 'rounded',
+        title = ' Lazygit ',
+        title_pos = 'center',
+      },
+    },
     terminal = {
       enabled = true,
       win = {
@@ -43,6 +53,17 @@ return {
       },
     },
     scroll = { enabled = true },
+    picker = {
+      layout = { preset = 'ivy' },
+      matcher = {
+        frecency = true,
+        cwd_bonus = true,
+        sort_empty = true,
+      },
+      debug = {
+        scores = true,
+      },
+    },
   },
   keys = {
     { "<leader>tt", function() Snacks.terminal.toggle() end, desc = "[T]oggle [T]erminal (count for slot)" },
@@ -63,6 +84,19 @@ return {
       desc = "[T]oggle [H]top",
     },
     { "<leader>gg", function() Snacks.lazygit.open() end, desc = "[G]it [G]UI (Lazygit)" },
+    { "<leader>ss", function()
+        Snacks.picker.smart {
+          multi = { "buffers", "recent", "files" },
+          format = "file",
+          matcher = {
+            cwd_bonus = true,
+            frecency = true,
+            sort_empty = true,
+          },
+          title = "Files",
+        }
+      end, desc = "[S]earch [S]nacks picker" },
+    { "<leader>sB", function() Snacks.picker.buffers() end, desc = "[S]nacks [B]uffers" },
     { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "[G]it current [F]ile (Lazygit)" },
     { "<leader>gl", function() Snacks.lazygit.log() end, desc = "[G]it [L]og (Lazygit)" },
   },
