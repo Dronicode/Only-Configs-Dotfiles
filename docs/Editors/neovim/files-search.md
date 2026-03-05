@@ -16,6 +16,7 @@
 | Shortcut     | Mode   | Action (mnemonic)                    | Defined In           |
 | ------------ | ------ | ------------------------------------ | -------------------- |
 | `<leader>ss` | Normal | \[s]nacks \[s]mart picker (frecency) | `plugins/snacks.lua` |
+| `<leader>sB` | Normal | \[s]nacks \[B]uffers                 | `plugins/snacks.lua` |
 
 ## Telescope: Content Search
 

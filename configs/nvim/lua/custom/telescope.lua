@@ -10,13 +10,18 @@ local show_hidden = true
 
 require('telescope').setup {
   defaults = {
+    -- Floating horizontal layout: centered floating window with a
+    -- side-by-side preview on the right. Width/height are fractions of
+    -- the editor size (0.6 = 60%). preview_width controls the preview
+    -- column relative to the picker area.
     layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
         prompt_position = 'bottom',
         preview_width = 0.6,
-        width = { padding = 0 },
-        height = { padding = 0 },
+        width = 0.6,
+        height = 0.6,
+        preview_cutoff = 40,
       },
     },
     file_ignore_patterns = file_ignore_patterns,

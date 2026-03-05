@@ -38,6 +38,13 @@ return {
     },
     scroll = { enabled = true },
     picker = {
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+          },
+        },
+      },
       layout = { preset = 'ivy' },
       matcher = {
         frecency = true,

@@ -100,6 +100,12 @@ vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = float_border_purple, bg =
 vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = float_border_purple, bg = 'none' })
 vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = float_border_purple, bg = 'none' })
 vim.api.nvim_set_hl(0, 'TelescopeTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'SnacksPickerInputBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'SnacksPickerListBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'SnacksPickerPreviewBorder', { fg = float_border_purple, bg = 'none' })
+vim.api.nvim_set_hl(0, 'SnacksPickerTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+vim.api.nvim_set_hl(0, 'SnacksPickerPrompt', { fg = float_title_cyan, bg = 'none', bold = true })
 
 -- Enable undercurl (curly underline) for diagnostics and set spine colors
 vim.api.nvim_create_autocmd("ColorScheme", {
@@ -111,6 +117,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = float_border_purple, bg = 'none' })
 		vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = float_border_purple, bg = 'none' })
 		vim.api.nvim_set_hl(0, 'TelescopeTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+		vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'SnacksPickerInputBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'SnacksPickerListBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'SnacksPickerPreviewBorder', { fg = float_border_purple, bg = 'none' })
+		vim.api.nvim_set_hl(0, 'SnacksPickerTitle', { fg = float_title_cyan, bg = 'none', bold = true })
+		vim.api.nvim_set_hl(0, 'SnacksPickerPrompt', { fg = float_title_cyan, bg = 'none', bold = true })
 
 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#ff4d6d" })
 		vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#d19a66" })

@@ -23,6 +23,7 @@ SAVEHIST=50000
 setopt APPEND_HISTORY          # Append history when shell exits (not immediately)
 setopt SHARE_HISTORY           # Share history between sessions (after appending)
 setopt HIST_IGNORE_DUPS        # Don't record duplicates
+setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicates when adding a new entry
 setopt HIST_IGNORE_SPACE       # Ignore commands starting with space
 setopt HIST_REDUCE_BLANKS      # Remove superfluous blanks
 setopt HIST_VERIFY             # Verify before executing from history
