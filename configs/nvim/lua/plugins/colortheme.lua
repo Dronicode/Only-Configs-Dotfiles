@@ -3,14 +3,6 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-        local tokyonight = require('tokyonight')
-
-        tokyonight.setup {
-            -- style = 'night',
-            style = 'storm',
-            -- style = 'day',
-        }
-
-        tokyonight.load()
+        require "custom.colortheme"
     end,
 }

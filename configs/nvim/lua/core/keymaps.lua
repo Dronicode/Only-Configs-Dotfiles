@@ -51,6 +51,58 @@ vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 
+-- Reload custom Lua modules
+vim.keymap.set('n', '<leader>rr', function()
+	-- Resolve the custom Lua directory inside your Neovim config
+	local config = vim.fn.stdpath 'config'
+	local custom_dir = config .. '/lua/custom'
+	local files = vim.fn.globpath(custom_dir, '**/*.lua', false, true)
+	local modules = {}
+	local errors = {}
+
+	-- Convert each file path into a Lua module name (custom.foo.bar)
+	for _, file in ipairs(files) do
+		local module = file
+			:gsub('^' .. vim.pesc(custom_dir .. '/'), 'custom.')
+			:gsub('%.lua$', '')
+			:gsub('/', '.')
+		table.insert(modules, module)
+	end
+
+	-- Keep reload order deterministic so behavior is consistent every time
+	table.sort(modules)
+	-- Load colors first so plugin highlight overrides can apply after it
+	for index, module in ipairs(modules) do
+		if module == 'custom.colortheme' then
+			table.remove(modules, index)
+			table.insert(modules, 1, module)
+			break
+		end
+	end
+
+	-- Unload then re-require each module; capture failures for visibility
+	for _, module in ipairs(modules) do
+		package.loaded[module] = nil
+		local ok, err = pcall(require, module)
+		if not ok then
+			table.insert(errors, string.format('%s: %s', module, err))
+		end
+	end
+
+	-- Force UI refresh so statusline/tabline-driven plugins redraw immediately
+	vim.cmd 'redrawtabline'
+	vim.cmd 'redrawstatus'
+	vim.cmd 'redraw!'
+
+	-- Surface any reload problems instead of failing silently
+	if #errors > 0 then
+		vim.notify('Reloaded with errors:\n' .. table.concat(errors, '\n'), vim.log.levels.ERROR)
+		return
+	end
+
+	vim.notify('Reloaded custom modules', vim.log.levels.INFO)
+end, { desc = 'Reload custom modules', noremap = true, silent = true })
+
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)

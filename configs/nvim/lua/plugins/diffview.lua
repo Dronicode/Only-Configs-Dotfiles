@@ -9,16 +9,6 @@ return {
     { '<leader>gce', '<cmd>DiffviewClose<CR>', desc = '[G]it Closing [E]verything' },
   },
   config = function()
-    require('diffview').setup({
-      enhanced_diff_hl = true,
-      view = {
-        default = {
-          layout = 'diff2_horizontal',
-        },
-        file_history = {
-          layout = 'diff2_horizontal',
-        },
-      },
-    })
+    require 'custom.diffview'
   end,
 }
