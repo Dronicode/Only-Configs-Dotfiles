@@ -80,8 +80,33 @@ vim.keymap.set('n', '<leader>rr', function()
 		end
 	end
 
-	-- Unload then re-require each module; capture failures for visibility
+	-- Only reload modules that are currently loaded to avoid errors when
+	-- plugin-backed modules or optional files are present but the plugin is
+	-- disabled. This makes the reload operation safe and idempotent.
+	local to_reload = {}
 	for _, module in ipairs(modules) do
+		if package.loaded[module] then
+			table.insert(to_reload, module)
+		end
+	end
+
+	-- If colortheme is loaded, ensure it reloads first so highlight changes
+	-- take effect before other modules.
+	for index, module in ipairs(to_reload) do
+		if module == 'custom.colortheme' then
+			table.remove(to_reload, index)
+			table.insert(to_reload, 1, module)
+			break
+		end
+	end
+
+	if #to_reload == 0 then
+		vim.notify('No loaded custom modules to reload', vim.log.levels.INFO)
+		return
+	end
+
+	-- Unload then re-require each loaded module; capture failures for visibility
+	for _, module in ipairs(to_reload) do
 		package.loaded[module] = nil
 		local ok, err = pcall(require, module)
 		if not ok then
