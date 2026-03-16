@@ -8,6 +8,64 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- For conciseness
 local opts = { noremap = true, silent = true }
 
+local tool_filetypes = {
+	['CopilotChat'] = true,
+	['copilot-chat'] = true,
+	['neo-tree'] = true,
+}
+
+local function is_content_window(winid)
+	if not vim.api.nvim_win_is_valid(winid) then
+		return false
+	end
+
+	local config = vim.api.nvim_win_get_config(winid)
+	if config.relative ~= '' then
+		return false
+	end
+
+	local bufnr = vim.api.nvim_win_get_buf(winid)
+	local filetype = vim.bo[bufnr].filetype
+	local buftype = vim.bo[bufnr].buftype
+
+	if tool_filetypes[filetype] then
+		return false
+	end
+
+	return buftype == '' or buftype == 'acwrite' or buftype == 'terminal'
+end
+
+local function smart_close_split()
+	local current_win = vim.api.nvim_get_current_win()
+
+	if not is_content_window(current_win) then
+		vim.cmd 'close'
+		return
+	end
+
+	local remaining_content_windows = 0
+	local remaining_windows = 0
+
+	for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if winid ~= current_win then
+			local config = vim.api.nvim_win_get_config(winid)
+			if config.relative == '' then
+				remaining_windows = remaining_windows + 1
+				if is_content_window(winid) then
+					remaining_content_windows = remaining_content_windows + 1
+				end
+			end
+		end
+	end
+
+	if remaining_windows > 0 and remaining_content_windows == 0 then
+		Snacks.bufdelete()
+		return
+	end
+
+	vim.cmd 'close'
+end
+
 -- Delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts)
 
@@ -26,14 +84,16 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
 -- Buffers
-vim.keymap.set('n', '<leader>x', ':bdelete!<CR>', opts) -- close buffer
+vim.keymap.set('n', '<leader>x', function()
+	Snacks.bufdelete()
+end, opts) -- close buffer
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 
 -- Window management
 vim.keymap.set('n', '<leader>>', '<C-w>v', opts) -- split window vertically (leader + >)
 vim.keymap.set('n', '<leader><', '<C-w>s', opts) -- split window horizontally (leader + <)
 vim.keymap.set('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
-vim.keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
+vim.keymap.set('n', '<leader>xs', smart_close_split, opts) -- close current split window
 vim.keymap.set('n', '<leader>sx', '<C-w>x', opts) -- [s]wap split windows e[x]change
 
 -- Navigate between splits

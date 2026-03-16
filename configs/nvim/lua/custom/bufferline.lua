@@ -7,9 +7,13 @@ options = {
 --           style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
         themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
         numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-        close_command = "bdelete! %d",       -- can be a string | function, | false see "Mouse actions"
+        close_command = function(bufnr)
+            Snacks.bufdelete(bufnr)
+        end,       -- can be a string | function, | false see "Mouse actions"
         left_mouse_command = "buffer %d",    -- can be a string | function, | false see "Mouse actions"
-        middle_mouse_command = "bdelete! %d", -- can be a string | function | false, see "Mouse actions"
+        middle_mouse_command = function(bufnr)
+            Snacks.bufdelete(bufnr)
+        end, -- can be a string | function | false, see "Mouse actions"
         right_mouse_command = "vertical sbuffer %d",          -- can be a string | function, | false see "Mouse actions"
         indicator = {
             icon = '▎', -- this should be omitted if indicator style is not 'icon'
