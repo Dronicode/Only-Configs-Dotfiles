@@ -23,6 +23,11 @@ config.font_size = 14.0
 
 -- Color scheme and rendering
 config.color_scheme = "tokyonight"
+config.colors = {
+	tab_bar = {
+		background = "#16161e", -- Matching Tokyo Night background
+	},
+}
 config.bold_brightens_ansi_colors = true
 
 -- Enable undercurl and vibrant colors

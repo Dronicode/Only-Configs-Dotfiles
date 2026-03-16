@@ -17,6 +17,7 @@ return {
       },
     },
     indent = { enabled = true },
+    statuscolumn = { enabled = true },
     lazygit = {
       enabled = true,
       win = {
@@ -55,6 +56,9 @@ return {
         scores = true,
       },
     },
+    notifier = { enabled = true },
+    input = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     { "<leader>tt", function() Snacks.terminal.toggle() end, desc = "[T]oggle [T]erminal (count for slot)" },

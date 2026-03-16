@@ -50,18 +50,23 @@ require('lualine').setup {
   tabline = {},
   winbar = {
     lualine_a = { mode },
-    lualine_b = { 'branch',diff, },
-    lualine_c = {  },
-    lualine_x = {  { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width },{'location', cond = hide_in_width }, {'progress', cond = hide_in_width } },
+    lualine_b = { 'branch' },
+    lualine_c = { diff },
+    lualine_x = {  
+        { 'encoding', cond = hide_in_width, color = "LualineWinbarNeutral" }, 
+        { 'filetype', cond = hide_in_width, color = "LualineWinbarNeutral", icon_only = false },
+        { 'location', cond = hide_in_width, color = "LualineWinbarNeutral" }, 
+        { 'progress', cond = hide_in_width, color = "LualineWinbarNeutral" } 
+    },
     lualine_y = { diagnostics, },
-    lualine_z = {  filename},},
+    lualine_z = {  { 'filename', icons_enabled = false } },},
   inactive_winbar = {
     lualine_a = {},
     lualine_b = {{'branch', cond = hide_in_width },diff},
     lualine_c = {  },
     lualine_x = {  },
     lualine_y = {diagnostics},
-    lualine_z = {{ 'filename', path = 1 }},
+    lualine_z = {{ 'filename', path = 1, icons_enabled = false }},
   },
   extensions = { 'fugitive' },
 }
