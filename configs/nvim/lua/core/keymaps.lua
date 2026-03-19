@@ -111,6 +111,12 @@ vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 
+-- Vale vocabulary helpers
+vim.keymap.set('n', '<leader>va', '<cmd>ValeAccept<CR>', { desc = '[V]ale [A]ccept word', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>vA', '<cmd>ValeAcceptInput<CR>', { desc = '[V]ale [A]ccept input', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>vr', '<cmd>ValeReject<CR>', { desc = '[V]ale [R]eject word', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>vR', '<cmd>ValeRejectInput<CR>', { desc = '[V]ale [R]eject input', noremap = true, silent = true })
+
 -- Reload custom Lua modules
 vim.keymap.set('n', '<leader>rr', function()
 	-- Resolve the custom Lua directory inside your Neovim config

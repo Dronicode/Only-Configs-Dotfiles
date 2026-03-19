@@ -1,8 +1,11 @@
 -- LSP on_attach handler - sets up keymaps when LSP attaches to a buffer
 local keymaps_module = require('core.keymaps')
+local vale = require('custom.vale')
 local on_attach = function(client, bufnr)
 	keymaps_module.SetupLspKeymaps(bufnr)
 end
+
+local vale_config_path = vale.get_config_path()
 
 local servers = {
 	-- Lua (for Neovim config and plugins)
@@ -73,20 +76,16 @@ local servers = {
 	--  omnisharp = {}, -- C# for Godot/Unity
 
 	-- Documentation & Writing
-	ltex = {
-		filetypes = { "markdown", "text", "gitcommit", "tex", "plaintex", "rst", "org" },
-		cmd_env = {
-			JAVA_OPTS = "-Djdk.xml.totalEntitySizeLimit=0 --enable-native-access=ALL-UNNAMED",
-		},
-		settings = {
-			ltex = {
-				language = "en-US",
-			},
-		},
-	}, -- Grammar checking in Markdown/LaTeX
 	marksman = {
 		filetypes = { "markdown", "markdown.mdx", "quarto" },
 	}, -- Markdown editing (Obsidian, docs)
+	vale_ls = {
+		init_options = {
+			configPath = vale_config_path,
+			installVale = false,
+			syncOnStartup = false,
+		},
+	}, -- Prose linting with regex-based ignores for templater blocks
 	texlab = {}, -- LaTeX editing
 
 	-- Data & Query Languages

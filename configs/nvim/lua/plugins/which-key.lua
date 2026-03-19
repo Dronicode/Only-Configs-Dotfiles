@@ -9,6 +9,7 @@ return {
 			{ '<leader>t', group = '[T]erminal/Tabs' },
 			{ '<leader>c', group = '[C]ode' },
 			{ '<leader>e', group = '[E]xplorer' },
+			{ '<leader>v', group = '[V]ale' },
 			{ '<leader>w', group = '[W]orkspace' },
 			{ '<leader>d', group = '[D]iagnostics' },
 		},

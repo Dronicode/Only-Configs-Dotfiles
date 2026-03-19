@@ -2,6 +2,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
+			automatic_enable = false,
 			ensure_installed = {
 				"lua_ls",
 				-- Web Development (Frontend)
@@ -35,13 +36,12 @@ return {
 				--  'omnisharp', -- C# for Godot/Unity
 
 				-- Documentation & Writing
-				"ltex", -- Grammar checking in Markdown/LaTeX
 				"marksman", -- Markdown editing (Obsidian, docs)
+				"vale_ls", -- Vale language server
 				"texlab", -- LaTeX editing
 
 				-- Data & Query Languages
 				"sqlls", -- SQL queries
-				"stylua",
 			},
 		},
 		dependencies = {
@@ -60,6 +60,15 @@ return {
 				config = function(_, opts)
 					require('custom.mason').setup(opts)
 				end,
+			},
+			{
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+				opts = {
+					ensure_installed = {
+						"stylua",
+						"vale",
+					},
+				},
 			},
 			"neovim/nvim-lspconfig",
 		},
