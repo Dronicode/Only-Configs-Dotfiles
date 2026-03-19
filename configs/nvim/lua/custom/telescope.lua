@@ -14,27 +14,18 @@ require('telescope').setup {
     -- side-by-side preview on the right. Width/height are fractions of
     -- the editor size (0.6 = 60%). preview_width controls the preview
     -- column relative to the picker area.
-    layout_strategy = 'horizontal',
+    entry_prefix = '', --'',
+    file_ignore_patterns = file_ignore_patterns,
     layout_config = {
       horizontal = {
-        prompt_position = 'bottom',
+        prompt_position = 'top',
         preview_width = 0.6,
         width = 0.6,
         height = 0.6,
         preview_cutoff = 40,
       },
     },
-    file_ignore_patterns = file_ignore_patterns,
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--trim',
-    },
+    layout_strategy = 'horizontal',
     mappings = {
       i = {
         ['<C-k>'] = actions.move_selection_previous,
@@ -45,6 +36,20 @@ require('telescope').setup {
         ['q'] = actions.close,
       },
     },
+    path_display = {'filename_first'},
+    selection_caret = '', --'',
+    sorting_strategy = "ascending",
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--trim',
+    },
+    --wrap_results = true,
   },
   pickers = {
     find_files = {
@@ -74,25 +79,26 @@ require('telescope').setup {
       return show_hidden and { '--hidden' } or {}
     end,
   },
-  path_display = {
-    filename_first = {
-      reverse_directories = true,
-    },
-  },
   extensions = {
     ['ui-select'] = {
       require('telescope.themes').get_dropdown(),
     },
     frecency = {
+      auto_validate = true,
       db_root = vim.fn.stdpath('data') .. '/frecency',
       db_name = 'frecency.sqlite3',
-      show_scores = true,
-      show_unindexed = true,
+      db_safe_mode = false,
+      db_validate_threshold = 1,
       disable_devicons = false,
+      hide_current_buffer = true,
+      ignore_patterns = { 'node_modules', '%.git/', '*/tmp/*', 'term://*' },
+      path_display = { 'filename_first' },
+      show_scores = false,
+      show_unindexed = true,
+      show_filter_column = false,
       workspaces = {
         ['conf'] = vim.fn.stdpath('config'),
       },
-      ignore_patterns = { 'node_modules', '%.git/' },
     },
   },
   git_files = {

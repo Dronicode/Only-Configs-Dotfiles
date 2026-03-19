@@ -39,6 +39,11 @@ return {
     },
     scroll = { enabled = true },
     picker = {
+      formatters = {
+        file = {
+          filename_first = true,
+        },
+      },
       win = {
         input = {
           keys = {
