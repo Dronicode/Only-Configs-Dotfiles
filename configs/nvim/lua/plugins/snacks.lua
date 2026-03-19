@@ -91,7 +91,7 @@ return {
           title = "Files",
         }
       end, desc = "[S]earch [S]nacks picker" },
-    { "<leader>sB", function() Snacks.picker.buffers() end, desc = "[S]nacks [B]uffers" },
+    { "<leader>b", function() Snacks.picker.buffers() end, desc = "snacks buffers" },
     { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "[G]it current [F]ile (Lazygit)" },
     { "<leader>gl", function() Snacks.lazygit.log() end, desc = "[G]it [L]og (Lazygit)" },
   },

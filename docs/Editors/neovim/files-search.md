@@ -6,7 +6,7 @@
 | ------------ | ------ | -------------------------------- | ----------------------- |
 | `<leader>sf` | Normal | \[s]earch \[f]iles (frecency)    | `plugins/telescope.lua` |
 | `<leader>sF` | Normal | \[s]earch \[F]iles (raw)         | `plugins/telescope.lua` |
-| `<leader>sb` | Normal | \[s]earch existing \[b]uffers    | `plugins/telescope.lua` |
+| `<leader>sb` | Normal | \[s]earch \[b]uffers             | `plugins/telescope.lua` |
 | `<leader>so` | Normal | \[s]earch \[o]ldfiles (frecency) | `plugins/telescope.lua` |
 | `<leader>sO` | Normal | \[s]earch \[O]ldfiles (raw)      | `plugins/telescope.lua` |
 | `<leader>sm` | Normal | \[s]earch \[m]arks               | `plugins/telescope.lua` |
@@ -16,7 +16,7 @@
 | Shortcut     | Mode   | Action (mnemonic)                    | Defined In           |
 | ------------ | ------ | ------------------------------------ | -------------------- |
 | `<leader>ss` | Normal | \[s]nacks \[s]mart picker (frecency) | `plugins/snacks.lua` |
-| `<leader>sB` | Normal | \[s]nacks \[B]uffers                 | `plugins/snacks.lua` |
+| `<leader>b`  | Normal | snacks \[b]uffers                    | `plugins/snacks.lua` |
 
 ## Telescope: Content Search
 
