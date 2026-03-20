@@ -22,13 +22,18 @@
 
 ### Copilot Chat
 
-| Shortcut     | Mode          | Action (mnemonic)                 | Defined In                 |
-| ------------ | ------------- | --------------------------------- | -------------------------- |
-| `<leader>cc` | Normal/Visual | Copilot \[c]hat \[c]ycle toggle   | `plugins/copilot-chat.lua` |
-| `<leader>cq` | Normal/Visual | Copilot \[c]hat \[q]uick question | `plugins/copilot-chat.lua` |
-| `<leader>ce` | Normal/Visual | Copilot \[c]hat \[e]xplain        | `plugins/copilot-chat.lua` |
-| `<leader>cr` | Normal/Visual | Copilot \[c]hat \[r]eview         | `plugins/copilot-chat.lua` |
-| `<leader>cx` | Normal/Visual | Copilot \[c]hat fi\[x]            | `plugins/copilot-chat.lua` |
-| `<leader>co` | Normal/Visual | Copilot \[c]hat \[o]ptimize       | `plugins/copilot-chat.lua` |
-| `<leader>ct` | Normal/Visual | Copilot \[c]hat \[t]ests          | `plugins/copilot-chat.lua` |
-| `<leader>cd` | Normal/Visual | Copilot \[c]hat \[d]ocs           | `plugins/copilot-chat.lua` |
+| Shortcut      | Mode          | Action (mnemonic)                  | Defined In                 |
+| ------------- | ------------- | ---------------------------------- | -------------------------- |
+| `<leader>cc`  | Normal/Visual | \[c]opilot \[c]hat toggle          | `plugins/copilot-chat.lua` |
+| `<leader>cq`  | Normal/Visual | \[c]opilot \[q]uick question       | `plugins/copilot-chat.lua` |
+| `<leader>ce`  | Normal/Visual | \[c]opilot \[e]xplain              | `plugins/copilot-chat.lua` |
+| `<leader>cr`  | Normal/Visual | \[c]opilot \[r]eview               | `plugins/copilot-chat.lua` |
+| `<leader>cx`  | Normal/Visual | \[c]opilot fi\[x]                  | `plugins/copilot-chat.lua` |
+| `<leader>co`  | Normal/Visual | \[c]opilot \[o]ptimize             | `plugins/copilot-chat.lua` |
+| `<leader>ct`  | Normal/Visual | \[c]opilot \[t]ests                | `plugins/copilot-chat.lua` |
+| `<leader>cd`  | Normal/Visual | \[c]opilot \[d]ocs                 | `plugins/copilot-chat.lua` |
+| `<leader>cba` | Normal/Visual | \[c]opilot add \[b]uffer \[a]ctive | `plugins/copilot-chat.lua` |
+| `<leader>cbl` | Normal/Visual | \[c]opilot add \[b]uffer \[l]isted | `plugins/copilot-chat.lua` |
+| `<leader>chs` | Normal/Visual | \[c]opilot \[h]istory \[s]ave      | `plugins/copilot-chat.lua` |
+| `<leader>chl` | Normal/Visual | \[c]opilot \[h]istory \[l]oad      | `plugins/copilot-chat.lua` |
+| `<leader>chd` | Normal/Visual | \[c]opilot \[h]istory \[d]elete    | `plugins/copilot-chat.lua` |
