@@ -71,7 +71,7 @@ end
 vim.diagnostic.config({
 	virtual_text = {
 		-- don't show the LSP/source name inline; keep it in floats
-		source = true ,
+		source = false,
 		severity = { min = vim.diagnostic.severity.HINT },
 		prefix = function(diagnostic)
 			return diagnostic_symbols[diagnostic.severity] or ""

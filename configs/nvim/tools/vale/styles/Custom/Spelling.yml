@@ -2,3 +2,5 @@ extends: spelling
 message: "Did you really mean '%s'?"
 level: warning
 vocab: true
+# Ignore snake_case identifiers (e.g., start_date, end_date)
+ignorepattern: '\b[a-z0-9]+(_[a-z0-9]+)+\b'

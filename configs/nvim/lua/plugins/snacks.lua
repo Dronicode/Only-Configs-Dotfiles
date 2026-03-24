@@ -42,6 +42,7 @@ return {
       formatters = {
         file = {
           filename_first = true,
+          truncate = "left",
         },
       },
       win = {
@@ -53,8 +54,9 @@ return {
       },
       layout = { preset = 'ivy' },
       matcher = {
-        frecency = true,
         cwd_bonus = true,
+        frecency = true,
+        history_bonus = true,
         sort_empty = true,
       },
       debug = {
