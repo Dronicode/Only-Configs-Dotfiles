@@ -85,4 +85,11 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# fnm
+FNM_PATH="/home/luffy/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+
 . "$HOME/.local/bin/env"
