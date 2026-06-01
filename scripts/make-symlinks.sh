@@ -75,11 +75,13 @@ fi
 
 # Zsh
 mkdir -p "$HOME/.config/zsh/cache/completions"
+safe_link "$CONFIGS_DIR/zsh/home/.zshenv" "$HOME/.zshenv"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.aliases" "$HOME/.config/zsh/.aliases"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.keybinds" "$HOME/.config/zsh/.keybinds"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.p10k.zsh" "$HOME/.config/zsh/.p10k.zsh"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/.zshrc" "$HOME/.config/zsh/.zshrc"
 safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/plugins.txt" "$HOME/.config/zsh/plugins.txt"
+safe_link "$CONFIGS_DIR/zsh/ZDOTDIR/plugins.vscode.txt" "$HOME/.config/zsh/plugins.vscode.txt"
 echo "✓ Linked zsh config"
 
 echo "Doing additional setup ..."

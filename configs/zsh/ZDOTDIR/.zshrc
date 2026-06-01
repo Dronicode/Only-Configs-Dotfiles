@@ -1,7 +1,7 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Enable Powerlevel10k instant prompt outside VS Code. Keep this close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ "$TERM_PROGRAM" != "vscode" && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -38,7 +38,11 @@ fi
 
 # Load Antidote
 source $ZDOTDIR/antidote/antidote.zsh
-antidote load $ZDOTDIR/plugins.txt
+plugins_file=$ZDOTDIR/plugins.txt
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  plugins_file=$ZDOTDIR/plugins.vscode.txt
+fi
+antidote load $plugins_file
 
 # Plugin-specific config
 zstyle ':completion:*' cache-path $ZDOTDIR/.zcompcache
@@ -72,10 +76,14 @@ if [ -f "$ZDOTDIR/.zsh_work_env" ]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+if [[ "$TERM_PROGRAM" != "vscode" && -f ~/.config/zsh/.p10k.zsh ]]; then
+  source ~/.config/zsh/.p10k.zsh
+fi
 
 # Set terminal title to basename of current directory for tab titles
-precmd() { print -Pn "\e]0;%~\a" }
+autoload -Uz add-zsh-hook
+set_terminal_title() { print -Pn "\e]0;%~\a" }
+add-zsh-hook precmd set_terminal_title
 
 # pnpm
 export PNPM_HOME="/home/luffy/.local/share/pnpm"

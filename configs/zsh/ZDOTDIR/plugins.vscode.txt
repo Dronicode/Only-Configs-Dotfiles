@@ -1,0 +1,10 @@
+
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-completions
+
+# Prompt and theme (optional)
+
+# Load-last plugins
+zsh-users/zsh-autosuggestions
+#zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
